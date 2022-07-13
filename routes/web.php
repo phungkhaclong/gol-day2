@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/haha', function () {
-    return view('home');
+    return view('page.page');
 });
+Route::get('/home', [HomeController::class, 'index'])->name('user.home');
