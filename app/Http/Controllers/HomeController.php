@@ -8,6 +8,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('page.page_day2');
+        return view('page.list_user');
+    }
+    public function adduser()
+    {
+        return view('page.add_user');
     }
 }

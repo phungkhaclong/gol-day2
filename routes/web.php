@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::get('/haha', function () {
     return view('page.page');
 });
-Route::get('/home', [HomeController::class, 'index'])->name('user.home');
+Route::get('/home', [HomeController::class, 'index'])->name('page.list_user');
+Route::get('/adduser', [HomeController::class, 'adduser'])->name('page.add_user');
