@@ -48,8 +48,11 @@
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Example textarea</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="add_user_button">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-secondary">Reset</button>
+        </div>
       </form>
    </div>
 </div>

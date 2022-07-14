@@ -17,6 +17,7 @@ a{
   }
 
 /* end_header */
+
 /* main */
 .main_left{
     background-color: #a0d1e7;
@@ -44,6 +45,24 @@ a{
     padding-left: 85%;
     margin-bottom: 10px;
 }
+.main_right tr th{
+    text-align: center;
+}
+.main_right tr td{
+    text-align: center;
+}
+.add_user_button{
+    text-align: center;
+}
+.add_user_button button{
+    border-radius: 35%;
+}
+.main_right_add .main_back{
+    float: left;
+    padding-left: 85%;
+    margin-bottom: 10px;
+}
+
 /* end_main */
 .footer {
     background-color: #ffffff;
