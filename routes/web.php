@@ -23,12 +23,8 @@ use App\Http\Requests\PermissionRequest;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/haha', function () {
-    return view('page.page');
-});
-Route::get('/home', [HomeController::class, 'index'])->name('page.list_user');
-Route::get('/adduser', [HomeController::class, 'adduser'])->name('page.add_user');
-Route::prefix('admin')->group(function(){
+
+Route::name('admin.')->prefix('admin')->group(function() {
     Route::resource('user', UserController::class);
     Route::resource('product', ProductController::class);
     Route::resource('category', CategoryController::class);

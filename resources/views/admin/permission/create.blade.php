@@ -8,11 +8,11 @@
         </div>
         <div class="col-md-10">
             <div class="main_back">
-                <button class="btn btn-primary"><a href="{{route('permission.index')}}">back</a> </button>
+                <button class="btn btn-primary"><a href="{{route('admin.permission.index')}}">back</a> </button>
             </div>
         </div>
     </div>
-    <form action="{{route('permission.store')}}" method="POST">
+    <form action="{{route('admin.permission.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Name</label>

@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="main_but">
-                            <button class="btn btn-primary"><a href="{{route('permission.create')}}">add per</a> </button>
+                            <button class="btn btn-primary"><a href="{{route('admin.permission.create')}}">add permision</a> </button>
                         </div>
                     </div>
                 </div>

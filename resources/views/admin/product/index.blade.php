@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="main_but">
-                            <button class="btn btn-primary"><a href="{{route('product.create')}}">add product</a> </button>
+                            <button class="btn btn-primary"><a href="{{route('admin.product.create')}}">add product</a> </button>
                         </div>
                     </div>
                 </div>

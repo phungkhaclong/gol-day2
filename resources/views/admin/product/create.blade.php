@@ -8,11 +8,11 @@
         </div>
         <div class="col-md-10">
             <div class="main_back">
-                <button class="btn btn-primary"><a href="{{route('product.index')}}">back</a> </button>
+                <button class="btn btn-primary"><a href="{{route('admin.product.index')}}">back</a> </button>
             </div>
         </div>
     </div>
-    <form action="{{route('product.store')}}" method="POST">
+    <form action="{{route('admin.product.store')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Name</label>

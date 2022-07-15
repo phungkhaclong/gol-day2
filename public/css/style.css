@@ -1,4 +1,4 @@
-/* header */
+
 *{
     margin: auto;
     font-family: 'Times New Roman', Times, serif;
@@ -8,7 +8,7 @@ a{
 
 }
 .header {
-    background-color: #ffffff;
+    background-color: #eec6c6;
     color: #000000;
     height: 40px;
     text-align: center;
@@ -16,9 +16,9 @@ a{
 
   }
 
-/* end_header */
 
-/* main */
+
+
 .main_left{
     background-color: #a0d1e7;
     /* height: 700px; */
@@ -42,7 +42,7 @@ a{
 }
 .main_right .main_but{
     float: left;
-    padding-left: 85%;
+    padding-left: 80%;
     margin-bottom: 10px;
 }
 .main_right tr th{
@@ -53,9 +53,12 @@ a{
 }
 .add_user_button{
     text-align: center;
+    padding-top: 15px ;
+
 }
 .add_user_button button{
     border-radius: 35%;
+
 }
 .main_right_add .main_back{
     float: left;
@@ -63,7 +66,7 @@ a{
     margin-bottom: 10px;
 }
 
-/* end_main */
+
 .footer {
     background-color: #ffffff;
     color: #000000;

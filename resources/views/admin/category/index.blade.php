@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="main_but">
-                            <button class="btn btn-primary"><a href="{{route('category.create')}}">add category</a> </button>
+                            <button class="btn btn-primary"><a href="{{route('admin.category.create')}}">add category</a> </button>
                         </div>
                     </div>
                 </div>
