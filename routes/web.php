@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Requests\PermissionRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +23,12 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/haha', function () {
-    return view('page.page');
+
+Route::name('admin.')->prefix('admin')->group(function() {
+    Route::resource('user', UserController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
 });
-Route::get('/home', [HomeController::class, 'index'])->name('user.home');
+
