@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-     <link rel="stylesheet" href="/site/css/stylecss.css" type="text/css">
+    <link rel="stylesheet" href="/css/app.css" type="text/css">
 
 </head>
 
@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
 
-            @include('admin.layout_admin.sidebar')
+            @include('admin.layouts.sidebar')
 
             @yield('main')
 

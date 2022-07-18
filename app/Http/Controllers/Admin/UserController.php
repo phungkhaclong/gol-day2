@@ -40,10 +40,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $adduser = $request->all();
-        $conllection = collect($adduser);
-        Session::push('adduser', $conllection);
-        return Session::all();
+        session::push('adduser', collect($request->all()));
+        return redirect()->route('admin.user.index');
     }
 
     /**

@@ -31,6 +31,6 @@ Route::name('admin.')->prefix('admin')->group(function() {
     Route::resource('category', CategoryController::class);
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
-    Route::resource('sendmail', SendMailController::class);
+    Route::resource('mails', SendMailController::class);
 });
-// Route::get('/admin/user/sendmail', [UserController::class, 'send_mail'])->name('admin.user.sendmail');
+

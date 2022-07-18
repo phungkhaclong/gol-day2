@@ -1,4 +1,4 @@
-@extends('admin.layout_admin.layout')
+@extends('admin.layouts.admin.master')
 @section('main')
 <div class="col-md-9 main_right_add">
    <div class="container">
@@ -32,15 +32,15 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                         <label for="exampleInputEmail1" class="form-label">password</label>
-                        <input type="password" name="password1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @error('password1')
+                        <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @error('password')
                             <span style = "color: red;">{{$message}}</span>
                         @enderror
                 </div>
                 <div class="col-md-6 mb-3">
                         <label for="exampleInputEmail1" class="form-label">Password Confirm</label>
-                        <input type="password" name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @error('password2')
+                        <input type="password" name="password_confirmation" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @error('password_confirmation')
                             <span style = "color: red;">{{$message}}</span>
                         @enderror
                 </div>
