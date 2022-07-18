@@ -16,7 +16,7 @@
         <br>
         <select class="form-select" aria-label="Default select example">
             <option >Chọn user...</option>
-            @foreach(session()->get('adduser') as $key => $value)
+            @foreach($adduser as $value)
                 <option >{{$value['name']}}</option>
             @endforeach
         </select>

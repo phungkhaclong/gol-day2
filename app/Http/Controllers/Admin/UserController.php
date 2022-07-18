@@ -17,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        $adduser = session()->get('adduser');
+        return view('admin.user.index',compact('adduser'));
     }
 
 

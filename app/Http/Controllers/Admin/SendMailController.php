@@ -9,6 +9,7 @@ class SendMailController extends Controller
 {
     public function index()
     {
-        return view('admin.mail.sendmail');
+        $adduser = session()->get('adduser');
+        return view('admin.mail.sendmail',compact('adduser'));
     }
 }

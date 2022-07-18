@@ -27,7 +27,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach(session()->get('adduser') as $key => $value)
+                    @foreach($adduser as $value)
                   <tr>
                     <th><i class="fa fa-user"></i></th>
                     <td>{{$value['name']}}</td>
