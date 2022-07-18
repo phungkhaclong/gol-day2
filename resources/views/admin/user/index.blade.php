@@ -9,7 +9,12 @@
                     </div>
                     <div class="col-md-10">
                         <div class="main_but">
-                            <button class="btn btn-primary"><a href="{{route('admin.user.create')}}">add user</a> </button>
+                            <span class="send_mail"><button type="button" class="btn btn-outline-secondary">
+                                <a href="{{route('admin.sendmail.index')}}">Send Mail</a></button>
+                            </span>
+                            <span class="add_user"><button class="btn btn-primary">
+                                <a href="{{route('admin.user.create')}}">add user</a> </button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -23,7 +28,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <th><i class="fa fa-user" aria-hidden="true"></i></th>
+                    <th><i class="fa fa-gamepad"></i></th>
                     <td>Phùng Khắc Long</td>
                     <td>Long@gmail.com</td>
                     <td>

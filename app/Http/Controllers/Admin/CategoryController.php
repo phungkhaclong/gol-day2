@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 
 class CategoryController extends Controller
@@ -39,7 +41,10 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        //
+        $category = $request->all();
+        $conllection = collect($category);
+        Session::push('category', $conllection);
+        dd(Session::all());
     }
 
     /**

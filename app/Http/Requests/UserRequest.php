@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
             ],
             'email' => 'required|email|not_regex:/^[root]/',
             'password1' => 'bail|required|min:8|regex:/^0-9@#$%&*+$/|confirmed',
-            'password2' => 'bail|required|same:password|regex:/^0-9@#$%&*+$/|confirmed',
+            'password2' => 'bail|required|same:password|confirmed',
             'facebook' => 'required|url',
             'youtube' => 'required|url'
         ];

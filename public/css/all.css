@@ -512,6 +512,12 @@ img {
 .display-30 {
     font-size: 0.9rem;
 }
+.main_but{
+    float: left;
+    padding-left: 70%;
+    margin-bottom: 10px;
+    display: flex;
+}
 
 /* .main_top table th {
     border: 1px solid #000;

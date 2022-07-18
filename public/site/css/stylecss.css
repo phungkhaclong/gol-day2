@@ -1,8 +1,10 @@
 a{
     text-decoration: none;
+    color: #000000;
 }
 .main_left ul li {
     list-style-type: none !important;
+
 }
 .header {
     background-color: #eec6c6;
@@ -11,7 +13,6 @@ a{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 30px;
-
   }
 .main_left{
     background-color: #a0d1e7;
@@ -39,6 +40,7 @@ a{
     padding-left: 70%;
     margin-bottom: 10px;
     display: flex;
+    margin-top: 10px;
 }
 .main_right tr th{
     text-align: center;
@@ -51,8 +53,8 @@ a{
     padding-top: 15px ;
 
 }
-.add_user_button {
-    border-radius: 20px;
+.add_user_button button {
+    border-radius: 30px;
 
 }
 .main_right_add .main_back{
@@ -60,13 +62,21 @@ a{
     padding-left: 85%;
     margin-bottom: 10px;
 }
+
+.send_mail{
+    margin-right: 10px;
+
+}
 .main_back_sendmail{
-    float: right;
+    padding-left: 85%;
+    margin-top: 10px;
+}
+.send_text{
+    margin-top: 10px;
 }
 
-
 .footer {
-    background-color: #ffffff;
+    background-color: #eec6c6;
     color: #000000;
     height: 40px;
     text-align: center;

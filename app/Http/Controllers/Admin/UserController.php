@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 
 class UserController extends Controller
@@ -18,6 +19,8 @@ class UserController extends Controller
     {
         return view('admin.user.index');
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +40,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        $adduser = $request->all();
+        $conllection = collect($adduser);
+        Session::push('adduser', $conllection);
+        return Session::all();
     }
 
     /**
