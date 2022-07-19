@@ -9,8 +9,7 @@ class MailService
 {
     public function sendUserProfile($user)
     {
-
-        Mail::to($user->all()[1]['email'])->send(new InformUserProfile($user));
+        Mail::to($user->all()[array_key_first($user->all())]['email'])->send(new InformUserProfile($user));
     }
 }
 ?>

@@ -22,6 +22,10 @@
                 <option value="{{$value['email']}}">{{$value['name']}}</option>
             @endforeach
         </select>
+        {{-- <div class="form-group">
+            <label for="attachment"> File đính kèm </label>
+            <input class="form-control" type="file" id="attachment" name="attachment">
+          </div> --}}
 
           <div class="add_user_button">
             <button type="submit" class="btn btn-primary">Submit</button>
