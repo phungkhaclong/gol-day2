@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Services\MailService;
+
 
 
 class UserController extends Controller
@@ -15,14 +17,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $mailService;
+    public function __construct(MailService $mailService)
+    {
+        $this->mailService = $mailService;
+    }
     public function index()
     {
-        $adduser = session()->get('adduser');
-        return view('admin.user.index',compact('adduser'));
+        $users = session()->get('users');
+        return view('admin.user.index',compact('users'));
     }
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,52 +45,29 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        session::push('adduser', collect($request->all()));
+        session::push('users', collect($request->only('name','email','address','password','facebook','youtube')));
         return redirect()->route('admin.user.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function formSendMail(Request $request)
     {
-        //
+        $input = $request->all();
+        $collection = $this->getUsers();
+        $user = $collection->where('email', $input['mail']);
+        $this->mailService->sendUserProfile($user);
+        return redirect()->back()->with("gửi mail thành công");
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function showmail(){
+        $users = session()->get('users');
+        return view('admin.mails.sendmail',compact('users'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    private function getUsers()
     {
-        //
+        return collect(session()->get('users'));
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function inform_profile()
     {
-        //
+
+        return view('admin.mails.inform_user_profile');
     }
 }

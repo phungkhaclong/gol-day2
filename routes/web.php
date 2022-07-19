@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\SendMailController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -31,6 +30,10 @@ Route::name('admin.')->prefix('admin')->group(function() {
     Route::resource('category', CategoryController::class);
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
-    Route::resource('mails', SendMailController::class);
 });
+Route::get('/admin/mails/sendmail', [UserController::class, 'showmail'])->name('admin.mails.sendmail');
+Route::post('/admin/mails/sendmailinfo', [UserController::class, 'formSendMail'])->name('formSendMail');
+
+Route::get('/admin/mails/inform_user_profile', [UserController::class, 'inform_profile'])->name('admin.mails.inform_user_profile');
+
 

@@ -74,12 +74,18 @@ a{
 .send_text{
     margin-top: 10px;
 }
+.pagination_user{
+    padding-left: 330px;
+}
+.pagination{
+    padding-left: 330px;
 
+}
 .footer {
     background-color: #eec6c6;
     color: #000000;
     height: 40px;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
-  }
+}
 

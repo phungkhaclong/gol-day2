@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
             @error('email')
                 <span style = "color: red;">{{$message}}</span>
             @enderror

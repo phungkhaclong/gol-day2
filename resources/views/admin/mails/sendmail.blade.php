@@ -14,15 +14,19 @@
             </div>
         </div>
         <br>
-        <select class="form-select" aria-label="Default select example">
+        <form action="{{route('formSendMail')}}" method="POST">
+            @csrf
+        <select name="mail" class="form-select" aria-label="Default select example">
             <option >Chọn user...</option>
-            @foreach($adduser as $value)
-                <option >{{$value['name']}}</option>
+            @foreach($users as $value)
+                <option value="{{$value['email']}}">{{$value['name']}}</option>
             @endforeach
         </select>
+
           <div class="add_user_button">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+    </form>
     </table>
 </div>
 
