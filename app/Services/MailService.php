@@ -7,10 +7,9 @@ use Illuminate\Support\Facades\Mail;
 
 class MailService
 {
-    public function sendUserProfile($user)
+    public function sendUserProfile($user,$filename)
     {
-
-        Mail::to($user['email'])->send(new InformUserProfile($user));
+        Mail::to($user['email'])->send(new InformUserProfile($user,$filename));
     }
 }
 ?>

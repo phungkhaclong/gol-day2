@@ -21,10 +21,10 @@
             </div>
         </div>
         <br>
-        <form action="{{route('formSendMail')}}" method="POST">
+        <form action="{{route('formSendMail')}}" method="POST" enctype="multipart/form-data" >
             @csrf
-        <select name="mail" class="form-select" aria-label="Default select example">
-            <option >Chọn user...</option>
+        <select name="email" class="form-select" aria-label="Default select example">
+            <option value="all_user" selected > Tất cả user...</option>
             @foreach($users as $value)
                 <option value="{{$value['email']}}">{{$value['name']}}</option>
             @endforeach

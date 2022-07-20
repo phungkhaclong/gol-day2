@@ -7,7 +7,8 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\MailService;
-use file;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -19,9 +20,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $mailService;
+
     public function __construct(MailService $mailService)
     {
         $this->mailService = $mailService;
+
     }
     public function index()
     {
@@ -52,12 +55,29 @@ class UserController extends Controller
 
     public function formSendMail(Request $request)
     {
-        $input = $request->all();
-        $collection = $this->getUsers();
-        $user = $collection->firstWhere('email', $input['mail']);
-        $this->mailService->sendUserProfile($user);
+        $users = $request->email == 'all_user' ? collect(Session::get('users')) : collect(Session::get('users'))->where('email','=', $request->email);
 
-        
+        $path = public_path('uploads');
+        $attachment = $request->file('attachment');
+
+        if(!empty($attachment)) {
+            $name = time().'.'.$attachment->getClientOriginalExtension();;
+            if(!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+            $attachment->move($path, $name);
+
+            $filename = $path.'/'.$name;
+            // dd($users);
+            foreach ($users as $user) {
+                $this->mailService->sendUserProfile($user, $filename);
+            }
+        }else {
+            foreach ($users as $user) {
+                $this->mailService->sendUserProfile($user, $filename= '/');
+            }
+        }
+
         return redirect()->back()->with('message','Gửi mail thành công');
     }
     public function showmail(){
