@@ -30,6 +30,7 @@ class InformUserProfile extends Mailable
      */
     public function build()
     {
+
         return $this->view('admin.mails.inform_user_profile', ['user'=> $this->user]);
     }
 }

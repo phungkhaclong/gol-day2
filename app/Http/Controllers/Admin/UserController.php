@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\MailService;
+use file;
 
 
 
@@ -45,17 +46,19 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        session::push('users', collect($request->only('name','email','address','password','facebook','youtube')));
-        return redirect()->route('admin.user.index');
+        session::push('users', $request->only('name','email','address','password','facebook','youtube'));
+        return redirect()->route('admin.user.index')->with('message','Thêm user thành công');
     }
 
     public function formSendMail(Request $request)
     {
         $input = $request->all();
         $collection = $this->getUsers();
-        $user = $collection->where('email', $input['mail']);
+        $user = $collection->firstWhere('email', $input['mail']);
         $this->mailService->sendUserProfile($user);
-        return redirect()->back()->with("gửi mail thành công");
+
+        
+        return redirect()->back()->with('message','Gửi mail thành công');
     }
     public function showmail(){
         $users = session()->get('users');

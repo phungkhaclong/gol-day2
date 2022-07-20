@@ -15,27 +15,26 @@
 
 <body>
     <div class="container">
-        @foreach($user as $value)
-        <p>Hi,{{$value['name']}}</p>
+
+        <p>Hi,{{$user['name']}}</p>
         <h4>This email send from system </h4><br>
         <h4>Please check your infomation. Is it correctly</h4><br>
         <ul class="list-group">
-            <li class="list-group-item" >name
-                <span class="float-end">{{$value['name']}}</span>
+            <li style="list-style-type: none" class="list-group-item" >Name :
+                <span class="float-end">{{$user['name']}}</span>
              </li>
-             <li class="list-group-item" >email
-                <span class="float-end">{{$value['email']}}</span>
+             <li style="list-style-type: none" class="list-group-item" >Email :
+                <span class="float-end">{{$user['email']}}</span>
              </li>
-             <li class="list-group-item" >address
-                <span class="float-end">{{$value['address']}}</span>
+             <li style="list-style-type: none" class="list-group-item" >Address :
+                <span class="float-end">{{$user['address']}}</span>
              </li>
-             <li class="list-group-item" >phone
+             <li style="list-style-type: none" class="list-group-item" >Phone :
                 <span class="float-end">0342130554</span>
              </li>
         </ul>
-        @endforeach
         <div style="text-align: center; padding-top:20px">
-            <button class="btn btn-primary" type="submit">Button</button>
+            <button class="btn btn-primary" type="submit"> <a href="">Button</a> </button>
         </div>
 </div>
 </body>
