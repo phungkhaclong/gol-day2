@@ -46,6 +46,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         session::push('users', $request->only('name', 'email', 'address', 'password', 'facebook', 'youtube'));
+        // dd( $users = session()->get('users'));
         return redirect()->route('admin.user.index')->with('message', 'Thêm user thành công');
     }
 
