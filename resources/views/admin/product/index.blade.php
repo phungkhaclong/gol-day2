@@ -1,4 +1,4 @@
-@extends('admin.layout_admin.layout')
+@extends('admin.layouts.admin.master')
 @section('main')
         <div class="col-md-9 main_right">
             <table class="table table-bordered">

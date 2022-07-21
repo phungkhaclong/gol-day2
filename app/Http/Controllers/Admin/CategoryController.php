@@ -7,6 +7,8 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
 
+
+
 class CategoryController extends Controller
 {
     /**
@@ -39,7 +41,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        //
+
     }
 
     /**

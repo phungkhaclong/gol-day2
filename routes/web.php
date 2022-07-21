@@ -31,4 +31,9 @@ Route::name('admin.')->prefix('admin')->group(function() {
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
 });
+Route::get('/admin/mails/sendmail', [UserController::class, 'showmail'])->name('admin.mails.sendmail');
+Route::post('/admin/mails/sendmailinfo', [UserController::class, 'formSendMail'])->name('formSendMail');
+
+Route::get('/admin/mails/inform_user_profile', [UserController::class, 'inform_profile'])->name('admin.mails.inform_user_profile');
+
 

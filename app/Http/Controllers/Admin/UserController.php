@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use App\Services\MailService;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class UserController extends Controller
@@ -14,11 +19,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $mailService;
+
+    public function __construct(MailService $mailService)
+    {
+        $this->mailService = $mailService;
+
+    }
     public function index()
     {
-        return view('admin.user.index');
+        $users = session()->get('users');
+        return view('admin.user.index',compact('users'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,51 +49,48 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        session::push('users', $request->only('name','email','address','password','facebook','youtube'));
+        return redirect()->route('admin.user.index')->with('message','Thêm user thành công');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function formSendMail(Request $request)
     {
-        //
-    }
+        $users = $request->email == 'all_user' ? collect(Session::get('users')) : collect(Session::get('users'))->where('email','=', $request->email);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $path = public_path('uploads');
+        $attachment = $request->file('attachment');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        if(!empty($attachment)) {
+            $name = time().'.'.$attachment->getClientOriginalExtension();;
+            if(!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+            $attachment->move($path, $name);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+            $filename = $path.'/'.$name;
+            // dd($users);
+            foreach ($users as $user) {
+                $this->mailService->sendUserProfile($user, $filename);
+            }
+        }else {
+            foreach ($users as $user) {
+                $this->mailService->sendUserProfile($user, $filename= '/');
+            }
+        }
+
+        return redirect()->back()->with('message','Gửi mail thành công');
+    }
+    public function showmail(){
+        $users = session()->get('users');
+        return view('admin.mails.sendmail',compact('users'));
+    }
+    private function getUsers()
     {
-        //
+        return collect(session()->get('users'));
+    }
+    public function inform_profile()
+    {
+
+        return view('admin.mails.inform_user_profile');
     }
 }

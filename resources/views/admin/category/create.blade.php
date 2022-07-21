@@ -1,4 +1,4 @@
-@extends('admin.layout_admin.layout')
+@extends('admin.layouts.admin.master')
 @section('main')
 <div class="col-md-9 main_right_add">
    <div class="container">
@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">description</label>
-            <input type="email" name="description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" name="description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             @error('description')
                 <span style = "color: red;">{{$message}}</span>
             @enderror

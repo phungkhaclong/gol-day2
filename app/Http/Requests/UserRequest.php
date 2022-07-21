@@ -33,8 +33,7 @@ class UserRequest extends FormRequest
                 new ValidateUserName(),
             ],
             'email' => 'required|email|not_regex:/^[root]/',
-            'password1' => 'bail|required|min:8|regex:/^0-9@#$%&*+$/|confirmed',
-            'password2' => 'bail|required|same:password|regex:/^0-9@#$%&*+$/|confirmed',
+            'password' => 'required|min:8|regex:/(?=.*?[@#$%&*])/|confirmed',
             'facebook' => 'required|url',
             'youtube' => 'required|url'
         ];
@@ -44,16 +43,14 @@ class UserRequest extends FormRequest
 	   return [
 		  'name.required' => __('Bạn chưa nhập Tên.'),
 		  'email.required' => __('Bạn chưa nhập Email.'),
-          'password1.required' => __('Bạn chưa nhập Mật khẩu.'),
-          'password2.required' => __('Bạn chưa nhập lại Mật khẩu.'),
+          'password.required' => __('Bạn chưa nhập Mật khẩu.'),
 		  'name.min' => __('Tên không được nhỏ hơn 2 ký tự.'),
-		  'password1.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.'),
+		  'password.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.'),
+		  'password.confirmed' => __('Mật khẩu phải giống nhau.'),
 		  'facebook.required' => __('Bạn chưa nhập đường dẫn .'),
 		  'youtube.required' => __('Bạn chưa nhập đường dẫn.'),
-            'facebook.url' => __('Bạn chưa nhập đúng định dạng.'),
+          'facebook.url' => __('Bạn chưa nhập đúng định dạng.'),
 		  'youtube.url' => __('Bạn chưa nhập đúng định dạng.'),
-
-
 	   ];
 	}
 }
