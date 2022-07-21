@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use App\Rules\ValidateUserName;
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class UserRequest extends FormRequest
 {
     /**
@@ -39,18 +38,18 @@ class UserRequest extends FormRequest
         ];
     }
     public function messages()
-	{
-	   return [
-		  'name.required' => __('Bạn chưa nhập Tên.'),
-		  'email.required' => __('Bạn chưa nhập Email.'),
+    {
+        return [
+          'name.required' => __('Bạn chưa nhập Tên.'),
+          'email.required' => __('Bạn chưa nhập Email.'),
           'password.required' => __('Bạn chưa nhập Mật khẩu.'),
-		  'name.min' => __('Tên không được nhỏ hơn 2 ký tự.'),
-		  'password.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.'),
-		  'password.confirmed' => __('Mật khẩu phải giống nhau.'),
-		  'facebook.required' => __('Bạn chưa nhập đường dẫn .'),
-		  'youtube.required' => __('Bạn chưa nhập đường dẫn.'),
+          'name.min' => __('Tên không được nhỏ hơn 2 ký tự.'),
+          'password.min' => __('Mật khẩu không được nhỏ hơn 8 ký tự.'),
+          'password.confirmed' => __('Mật khẩu phải giống nhau.'),
+          'facebook.required' => __('Bạn chưa nhập đường dẫn .'),
+          'youtube.required' => __('Bạn chưa nhập đường dẫn.'),
           'facebook.url' => __('Bạn chưa nhập đúng định dạng.'),
-		  'youtube.url' => __('Bạn chưa nhập đúng định dạng.'),
-	   ];
-	}
+          'youtube.url' => __('Bạn chưa nhập đúng định dạng.'),
+       ];
+    }
 }

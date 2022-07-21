@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
 use Illuminate\Http\Request;
 
-
 class PermissionController extends Controller
 {
     /**
@@ -17,7 +16,6 @@ class PermissionController extends Controller
     public function index()
     {
         return view('admin.permission.index');
-
     }
 
     /**
@@ -28,7 +26,6 @@ class PermissionController extends Controller
     public function create()
     {
         return view('admin.permission.create');
-
     }
 
     /**

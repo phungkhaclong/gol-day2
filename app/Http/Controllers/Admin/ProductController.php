@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 
-
-
 class ProductController extends Controller
 {
     /**
@@ -28,7 +26,6 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.product.create');
-
     }
 
     /**
@@ -39,9 +36,6 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-
-
-
     }
 
     /**
