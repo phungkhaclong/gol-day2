@@ -9,6 +9,7 @@ class MailService
 {
     public function sendUserProfile($user, $filename)
     {
+        // dd($filename);
         Mail::to($user['email'])->send(new InformUserProfile($user, $filename));
     }
 }

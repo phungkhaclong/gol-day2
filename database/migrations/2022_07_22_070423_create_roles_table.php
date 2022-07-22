@@ -12,10 +12,13 @@ return new class () extends Migration {
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('name');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->integer('id')->length(10)->unsigned()->primary();
+            $table->string('name', 255);
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -24,8 +27,6 @@ return new class () extends Migration {
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('roles');
     }
 };

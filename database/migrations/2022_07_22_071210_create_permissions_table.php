@@ -12,7 +12,11 @@ return new class () extends Migration {
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->integer('id')->length(10)->unsigned()->primary();
+            $table->string('name', 255)->unique();
+            $table->string('key', 255)->unique();
+            $table->integer('permission_group_id')->unique()->unsigned();
             $table->timestamps();
         });
     }
@@ -24,8 +28,6 @@ return new class () extends Migration {
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('permissions');
     }
 };
