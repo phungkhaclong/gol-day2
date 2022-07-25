@@ -13,7 +13,7 @@ return new class () extends Migration {
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->integer('id')->length(10)->primary();
+            $table->increments('id')->length(10);
             $table->string('name', 255);
             $table->timestamps();
         });
