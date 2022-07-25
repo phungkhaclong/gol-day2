@@ -31,8 +31,9 @@ return new class () extends Migration {
             $table->string('twitter_url')->nullable();
             $table->string('youtube_url')->nullable();
             $table->string('fax_number')->nullable();
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
+
         });
 
     }
