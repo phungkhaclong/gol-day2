@@ -13,13 +13,28 @@ return new class () extends Migration {
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigInteger('id')->primary();
+            $table->string('name', 50);
+            $table->string('email', 32);
+            $table->string('username', 50);
+            $table->string('password', 200);
+            $table->string('phone', 100);
+            $table->string('address');
+            $table->bigInteger('school_id');
+            $table->tinyInteger('type');
+            $table->integer('parent_id');
+            $table->string('verified_at');
+            $table->string('closed bool')->default(0);
+            $table->string('code')->unique()->nullable();
+            $table->tinyInteger('social_type');
+            $table->tinyInteger('social_id')->unique()->nullable();
+            $table->string('social_name');
+            $table->string('social_nickname');
+            $table->string('social_avatar');
+            $table->string('description text');
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreign('school_id')->references('id')->on('schools')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
