@@ -22,7 +22,7 @@ class InformUserProfile extends Mailable
     public function __construct($user, $filename)
     {
         $this->user = $user;
-        $this->user = $filename;
+        $this->filename = $filename;
     }
 
     /**
