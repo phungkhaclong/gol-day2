@@ -35,7 +35,6 @@ return new class () extends Migration {
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('school_id')->references('id')->on('schools')->onUpdate('cascade')->onDelete('cascade');
-
         });
     }
 

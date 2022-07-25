@@ -33,9 +33,7 @@ return new class () extends Migration {
             $table->string('fax_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
         });
-
     }
 
     /**
