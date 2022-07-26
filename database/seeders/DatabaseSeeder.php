@@ -2,11 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\School;
 use Illuminate\Database\Seeder;
-use Database\Seeders\RoleSeeder;
-use Database\Seeders\UserSeeder;
-use Database\Seeders\SchoolSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,16 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            SchoolSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
+            UserRoleSeeder::class,
+            PermissionGroupSeeder::class,
+            PermissionSeeder::class,
+            TagSeeder::class,
+            RolePermissionSeeder::class,
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        $this->call(SchoolSeeder::class);
-        $this->call(RoleSeeder::class);
-
-        $this->call(UserSeeder::class);
-
+        ]);
     }
 }
