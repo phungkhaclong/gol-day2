@@ -25,18 +25,22 @@ class User extends Authenticatable
     protected $guarded = [
 
     ];
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
     }
+
     public function tags()
     {
         return $this->morphedToMany(Tag::class, 'taggables', 'tag_id', 'taggable_id');
     }
+
     public function school()
     {
         return $this->belongsTo(School::class);
     }
+
     public function messages()
     {
         return $this->hasMany(Message::class);

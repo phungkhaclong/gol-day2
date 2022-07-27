@@ -11,6 +11,7 @@ class Role extends Model
     protected $table = 'roles';
 
     protected $fillable = [
+        
         'name',
     ];
     public function permission()
