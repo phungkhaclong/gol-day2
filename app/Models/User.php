@@ -23,9 +23,26 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        
+
+    ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
@@ -45,22 +62,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
