@@ -13,9 +13,9 @@ return new class () extends Migration {
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->bigInteger('id')->unsigned()->nullable(false)->autoIncrement();
+            $table->bigIncrements('id');
             $table->string('room', 255)->nullable(false);
-            $table->bigInteger('sender_id')->nullable(false)->foreign('sender_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('sender_id')->nullable(false)->foreign('sender_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('sender_type', 255)->nullable(false);
             $table->bigInteger('receiver_id')->unsigned()->nullable(false);
             $table->string('receiver_type', 255)->nullable(false);

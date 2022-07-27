@@ -13,14 +13,14 @@ return new class () extends Migration {
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigInteger('id')->primary();
+            $table->bigIncrements('id');
             $table->string('name', 50);
-            $table->string('email', 32);
+            $table->string('email', 100);
             $table->string('username', 50);
             $table->string('password', 200);
             $table->string('phone', 100);
             $table->string('address');
-            $table->bigInteger('school_id');
+            $table->unsignedBigInteger('school_id');
             $table->tinyInteger('type');
             $table->integer('parent_id');
             $table->string('verified_at');
