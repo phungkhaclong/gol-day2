@@ -10,6 +10,7 @@ class School extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    
     public function users()
     {
         return $this->hasMany(User::class);

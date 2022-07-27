@@ -22,8 +22,8 @@ class User extends Authenticatable
      */
     protected $table = 'users';
 
-    protected $guarded = [
-
+    protected $fillable = [
+        
     ];
 
     public function roles()

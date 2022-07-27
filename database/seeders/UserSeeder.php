@@ -19,11 +19,11 @@ class UserSeeder extends Seeder
         User::factory()->count(20)->create();
         for ($i = 0; $i < 50; $i++) {
             DB::table('users_roles')->insert([
-            'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,
+                'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,
             'roles_id' => Role::select('id')->orderByRaw("RAND()")->first()->id,
-            'created_at' => now(),
+                'created_at' => now(),
             'updated_at' => now(),
-        ]);
+            ]);
         }
     }
 }
