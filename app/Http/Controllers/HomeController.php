@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        return view('page.list_user');
+        $this->middleware('auth');
     }
-    public function adduser()
+
+      public function index()
     {
-        return view('page.add_user');
+        return view('home');
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -27,12 +28,22 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $user = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])){
-            // Authentication passed...
-            return redirect()->intended('dashboard');
+        if (Auth::attempt($user)) {
+            $request->session();
+            if (Auth::User()->type == 2) {
+                return redirect()->route('home')->with('status', 'Đăng nhập thành công');
+            }else{
+                return redirect('/admin/user')->route('admin.user')->with('status', 'Đăng nhập thành công');
+            }
+        }else {
+            return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
         }
+
     }
 
     /**
@@ -40,7 +51,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+
 
     /**
      * Create a new controller instance.
