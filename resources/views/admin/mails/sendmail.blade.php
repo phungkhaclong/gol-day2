@@ -21,7 +21,7 @@
             </div>
         </div>
         <br>
-        <form action="{{route('formSendMail')}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{route('admin.formSendMail')}}" method="POST" enctype="multipart/form-data" >
             @csrf
         <select name="email" class="form-select" aria-label="Default select example">
             <option value="all_user" selected > Tất cả user...</option>

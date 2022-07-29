@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\MailService;
 use Illuminate\Support\Facades\File;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -24,7 +25,8 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = session()->get('users');
+        // $users = session()->get('users');
+        $users = User::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.user.index', compact('users'));
     }
     /**
@@ -77,15 +79,18 @@ class UserController extends Controller
 
         return redirect()->back()->with('message', 'Gửi mail thành công');
     }
+
     public function showmail()
     {
         $users = session()->get('users');
         return view('admin.mails.sendmail', compact('users'));
     }
+
     private function getUsers()
     {
         return collect(session()->get('users'));
     }
+
     public function inform_profile()
     {
         return view('admin.mails.inform_user_profile');

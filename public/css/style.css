@@ -1,0 +1,90 @@
+a{
+    text-decoration: none;
+    color: #000000;
+}
+.main_left ul li {
+    list-style-type: none !important;
+
+}
+.header {
+    background-color: #eec6c6;
+    color: #000000;
+    height: 40px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+  }
+.main_left{
+    background-color: #a0d1e7;
+    /* height: 700px; */
+    padding-top: 80px;
+}
+.main_left ul li a{
+    text-decoration: none;
+    padding-left: 30px;
+}
+
+.main_right{
+    background-color: #ffffff;
+    /* height: 700px; */
+}
+.main_right_add{
+    background-color: #ffffff;
+    /* height: 700px; */
+}
+.main_right p span{
+    float: left;
+}
+.main_right .main_but{
+    float: left;
+    padding-left: 70%;
+    margin-bottom: 10px;
+    display: flex;
+    margin-top: 10px;
+}
+.main_right tr th{
+    text-align: center;
+}
+.main_right tr td{
+    text-align: center;
+}
+.add_user_button{
+    text-align: center;
+    padding-top: 15px ;
+
+}
+.add_user_button button {
+    border-radius: 30px;
+
+}
+.main_right_add .main_back{
+    float: left;
+    padding-left: 85%;
+    margin-bottom: 10px;
+}
+
+.send_mail{
+    margin-right: 10px;
+
+}
+.main_back_sendmail{
+    padding-left: 85%;
+    margin-top: 10px;
+}
+.send_text{
+    margin-top: 10px;
+}
+.pagination_user{
+    padding-left: 330px;
+}
+.pagination{
+    padding-left: 330px;
+
+}
+.footer {
+    background-color: #eec6c6;
+    color: #000000;
+    height: 40px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
