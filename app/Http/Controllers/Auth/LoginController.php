@@ -32,7 +32,7 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
         if ($this->attemptLogin($request)) {
-            return $this->redirectTo();
+            return redirect($this->redirectPath());
         }
         return redirect()->route('login')->with('message', 'Đăng nhập chưa thành công');
     }
@@ -40,10 +40,9 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (Auth::user()->isAdmin()) {
-            return redirect()->route('admin.user.index')->with('message', 'Đăng nhập thành công! Chào mừng bạn đến với Admin') ;
+            return '/admin/user';
         }
-
-        return redirect()->route('home')->with('message', 'Đăng nhập thành công! Chào mừng bạn');
+        return '/home';
     }
 
     /**
