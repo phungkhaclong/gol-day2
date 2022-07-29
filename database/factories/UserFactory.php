@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'school_id' => School::all()->random()->id,
             'type' => fake()->randomDigit(),
             'parent_id' => fake()->randomNumber(4, false),
-            'email_verified_at' => null,
+            'verified_at' => null,
             'code' => fake()->unique()->randomNumber(5, false),
             'social_type' => fake()->randomDigit(),
             'social_name' => fake()->name(),

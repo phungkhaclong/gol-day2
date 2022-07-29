@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -32,18 +31,19 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+        if ($this->attemptLogin($request)) {
+            return $this->redirectTo();
+        }
+        return redirect()->route('login')->with('message', 'Đăng nhập chưa thành công');
+    }
 
-        if (Auth::attempt($user)) {
-            $request->session();
-            if (Auth::User() -> isAdmin()) {
-                return redirect()->route('admin.user.index')->with('message', 'Đăng nhập thành công');
-            }else{
-                return redirect()->route('home')->with('massage', 'Đăng nhập thành công');
-            }
-        }else {
-            return redirect()->back()->with('massage', 'Email hoặc Password không chính xác');
+    protected function redirectTo()
+    {
+        if (Auth::user()->isAdmin()) {
+            return redirect()->route('admin.user.index')->with('message', 'Đăng nhập thành công! Chào mừng bạn đến với Admin') ;
         }
 
+        return redirect()->route('home')->with('message', 'Đăng nhập thành công! Chào mừng bạn');
     }
 
     /**

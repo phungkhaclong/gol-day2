@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'password' => Hash::make('123@123'),
             'type' => User::TYPE['admin'],
-            'email_verified_at' => null,
+            'verified_at' => null,
             'school_id' => null,
         ])->create();
         User::factory() ->count(5)->create();

@@ -16,7 +16,7 @@
                     <div class="col-md-10">
                         <div class="main_but">
                             <span class="send_mail"><button type="button" class="btn btn-outline-secondary">
-                                <a href="">Send Mail</a></button>
+                                <a href="{{route('admin.admin_sendmail')}}">Send Mail</a></button>
                             </span>
                             <span class="add_user"><button class="btn btn-primary">
                                 <a href="{{route('admin.user.create')}}">add user</a> </button>
@@ -35,15 +35,15 @@
                 <tbody>
                     @if(!empty($users))
                     @foreach($users as $value)
-                  <tr>
-                    <th><i class="fa fa-user"></i></th>
-                    <td>{{$value['name']}}</td>
-                    <td>{{$value['email']}}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary">Thêm</button>
-                        <button type="button" class="btn btn-danger">Xóa</button>
-                    </td>
-                  </tr>
+                    <tr>
+                        <th><i class="fa fa-user"></i></th>
+                        <td>{{$value->name}}</td>
+                        <td>{{$value['email']}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Thêm</button>
+                            <button type="button" class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
                   @endforeach
                   @endif
                 </tbody>

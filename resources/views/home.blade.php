@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @if (\Session::has('message'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li style="list-style-type: none">{!! \Session::get('message') !!}</li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
                 <div class="card-body">
-                    @if (session('massage'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('massage') }}
-                        </div>
-                    @endif
-
                     {{ __('You are logged in!') }}
                 </div>
             </div>

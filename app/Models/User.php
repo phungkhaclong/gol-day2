@@ -37,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'school_id',
         'type',
         'parent_id',
-        'email_verified_at',
+        'verified_at',
         'closed',
         'code',
         'social_type',
@@ -94,5 +94,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->type == self::TYPE['student'];
     }
-}
 
+    public function hasVerifiedEmail()
+    {
+        return ! is_null($this->verified_at);
+    }
+
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'verified_at' => $this->freshTimestamp(),
+        ])->save();
+    }
+}
