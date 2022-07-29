@@ -3,10 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+            <div class="col-md-8">
+                @if (\Session::has('message'))
+                <div class="alert alert-success">
+                    <ul>
+                        <li style="list-style-type: none">{!! \Session::get('message') !!}</li>
+                    </ul>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

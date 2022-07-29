@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class CheckLoginAdmin
+class AdminVerifyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,14 +18,14 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            if ($user->type == 1) {
-                return $next($request);
-            } else {
-                return redirect()->route('login')->with('status', 'Chỉ tài khoản admin mới được truy cập');
-            }
-        } else
-            return redirect()->route('login')->with('status', 'Chỉ tài khoản admin mới được truy cập');
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        if (Auth::user()->isAdmin()) {
+            return $next($request);
+        }
+
+        return redirect()->route('home');
     }
 }

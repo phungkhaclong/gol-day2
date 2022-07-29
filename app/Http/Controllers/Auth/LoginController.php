@@ -26,7 +26,7 @@ class LoginController extends Controller
     */
 
 
-    public function authenticate(Request $request)
+    public function login(Request $request)
     {
         $user = $request->validate([
             'email' => ['required', 'email'],
@@ -35,13 +35,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($user)) {
             $request->session();
-            if (Auth::User()->type == 2) {
-                return redirect()->route('home')->with('status', 'Đăng nhập thành công');
+            if (Auth::User() -> isAdmin()) {
+                return redirect()->route('admin.user.index')->with('message', 'Đăng nhập thành công');
             }else{
-                return redirect('/admin/user')->route('admin.user')->with('status', 'Đăng nhập thành công');
+                return redirect()->route('home')->with('massage', 'Đăng nhập thành công');
             }
         }else {
-            return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
+            return redirect()->back()->with('massage', 'Email hoặc Password không chính xác');
         }
 
     }

@@ -17,7 +17,7 @@
     <div class="container header">
         <div class="row">
             <div class="col-md-3">
-                <p>GolSoft</p>
+                <p><a href="{{route('home')}}">GolSoft</a> </p>
             </div>
             <div class="col-md-9">
                 <p>Header</p>

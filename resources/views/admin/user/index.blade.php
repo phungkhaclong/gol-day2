@@ -16,7 +16,7 @@
                     <div class="col-md-10">
                         <div class="main_but">
                             <span class="send_mail"><button type="button" class="btn btn-outline-secondary">
-                                <a href="{{route('admin.mails.sendmail')}}">Send Mail</a></button>
+                                <a href="">Send Mail</a></button>
                             </span>
                             <span class="add_user"><button class="btn btn-primary">
                                 <a href="{{route('admin.user.create')}}">add user</a> </button>

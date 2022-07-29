@@ -26,23 +26,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::name('admin.')->prefix('admin')->group(function () {
-//     Route::resource('user', UserController::class);
-//     Route::resource('product', ProductController::class);
-//     Route::resource('category', CategoryController::class);
-//     Route::resource('role', RoleController::class);
-//     Route::resource('permission', PermissionController::class);
-// });
-// Route::get('/admin/mails/sendmail', [UserController::class, 'showmail'])->name('admin.mails.sendmail');
-// Route::post('/admin/mails/sendmailinfo', [UserController::class, 'formSendMail'])->name('formSendMail');
-// Route::get('/admin/mails/inform_user_profile', [UserController::class, 'inform_profile'])->name('admin.mails.inform_user_profile');
-
 Auth::routes((['verify' => true]));
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::name('admin.')->prefix('admin')->middleware(['CheckLoginAdmin'])->group(function () {
-    Route::get('/admin/mails/sendmail', [UserController::class, 'showmail'])->name('admin.mails.sendmail');
+Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->group(function () {
+    Route::get('/admin/mails/sendmail', [UserController::class, 'showmail'])->name('admin_sendmail');
     Route::post('/admin/mails/sendmailinfo', [UserController::class, 'formSendMail'])->name('formSendMail');
     Route::get('/admin/mails/inform_user_profile', [UserController::class, 'inform_profile'])->name('admin.mails.inform_user_profile');
     Route::resource('user', UserController::class);
