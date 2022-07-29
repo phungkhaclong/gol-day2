@@ -38,7 +38,7 @@
                     <tr>
                         <th><i class="fa fa-user"></i></th>
                         <td>{{$value->name}}</td>
-                        <td>{{$value['email']}}</td>
+                        <td>{{$value->email}}</td>
                         <td>
                             <button type="button" class="btn btn-primary">Thêm</button>
                             <button type="button" class="btn btn-danger">Xóa</button>
