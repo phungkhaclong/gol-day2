@@ -81,8 +81,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $user = $this->create($request->all());
-        event(new Registered($user));
+        event(new Registered($this->create($request->all())));
         return redirect('/login')->with('message', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
     }
 }
