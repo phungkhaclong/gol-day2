@@ -19,6 +19,7 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $username = $request->getCredentials();
+        
         if (!Auth::attempt($username)) {
             return redirect()->route('login')->with('message', 'Đăng nhập chưa thành công');
         }
