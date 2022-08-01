@@ -77,15 +77,18 @@ class UserController extends Controller
 
         return redirect()->back()->with('message', 'Gửi mail thành công');
     }
+
     public function showmail()
     {
         $users = session()->get('users');
         return view('admin.mails.sendmail', compact('users'));
     }
+
     private function getUsers()
     {
         return collect(session()->get('users'));
     }
+
     public function inform_profile()
     {
         return view('admin.mails.inform_user_profile');

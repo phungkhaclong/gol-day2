@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="/css/app.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+
 
 </head>
 
@@ -17,7 +20,7 @@
     <div class="container header">
         <div class="row">
             <div class="col-md-3">
-                <p>GolSoft</p>
+                <p><a href="{{route('home')}}">GolSoft</a> </p>
             </div>
             <div class="col-md-9">
                 <p>Header</p>
