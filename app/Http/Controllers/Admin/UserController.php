@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\MailService;
 use Illuminate\Support\Facades\File;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -25,8 +24,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        // $users = session()->get('users');
-        $users = User::orderBy('created_at', 'DESC')->paginate(10);
+        $users = session()->get('users');
         return view('admin.user.index', compact('users'));
     }
     /**

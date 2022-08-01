@@ -77,6 +77,7 @@ class RegisterController extends Controller
             'type' => User::TYPE['student'],
         ]);
     }
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
