@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\PermissionGroupController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -37,4 +38,5 @@ Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->g
     Route::resource('category', CategoryController::class);
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
+    Route::resource('permission_group', PermissionGroupController::class);
 });
