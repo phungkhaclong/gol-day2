@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 interface RepositoryInterface
 {
-
     public function paginate(array $input = [], $perPage = 10);
 
     public function save(array $inputs, array $conditions = []);

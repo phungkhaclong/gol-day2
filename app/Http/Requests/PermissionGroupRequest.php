@@ -33,7 +33,7 @@ class PermissionGroupRequest extends FormRequest
         return [
             'name.required' => 'Không được bỏ trống',
             'name.min' => 'Vui lòng nhập nhiều hơn 2 kí tự',
-           
+
         ];
     }
 }

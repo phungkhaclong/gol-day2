@@ -24,7 +24,7 @@ class VerificationController extends Controller
     public function verify(Request $request)
     {
         $user = User::find($request->route('id'));
-        
+
         if (!$user) {
             throw new AuthorizationException();
         }
