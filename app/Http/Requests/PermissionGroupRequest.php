@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PermissionGroupRequest extends FormRequest
 {
@@ -24,16 +25,7 @@ class PermissionGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2',
-
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required' => 'Không được bỏ trống',
-            'name.min' => 'Vui lòng nhập nhiều hơn 2 kí tự',
-
+            'name' => ['required', Rule::unique('permission_groups')->ignore($this->permission_group)],
         ];
     }
 }

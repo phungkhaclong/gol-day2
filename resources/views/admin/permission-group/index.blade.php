@@ -5,11 +5,11 @@
         <table class="table table-bordered">
             <div class="row">
                 <div class="col-md-2">
-                    <p><span>List Permission_Group</span> </p>
+                    <p><span>List Permission-group</span> </p>
                 </div>
                 <div class="col-md-10">
                     <div class="main_but">
-                        <button class="btn btn-primary"><a href="{{ route('admin.permission_group.create') }}">add
+                        <button class="btn btn-primary"><a href="{{ route('admin.permission-group.create') }}">add
                                 permision</a> </button>
                     </div>
                 </div>
@@ -31,12 +31,12 @@
                             <td>{{ $permissionGroup->name }}</td>
 
                             <td>
-                                <a href="{{ route('admin.permission_group.show', $permissionGroup->id) }}"
+                                <a href="{{ route('admin.permission-group.show', $permissionGroup->id) }}"
                                     class="btn btn-success"> Show </a>
-                                <a href="{{ route('admin.permission_group.edit', $permissionGroup->id) }}"
+                                <a href="{{ route('admin.permission-group.edit', $permissionGroup->id) }}"
                                     class="btn btn-primary"> Edit </a>
                                 <form class="d-inline" method="post"
-                                    action="{{ route('admin.permission_group.destroy', $permissionGroup->id) }}">
+                                    action="{{ route('admin.permission-group.destroy', $permissionGroup->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"> Delete </button>

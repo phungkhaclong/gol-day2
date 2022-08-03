@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between">
         <p style="font-weight: bold;"> Showing Permission Group: </p>
         <div>
-          <a href="{{ route('admin.permission_group.index') }}" class="btn btn-primary">Back</a>
+          <a href="{{ route('admin.permission-group.index') }}" class="btn btn-primary">Back</a>
         </div>
       </div>
       @if(!empty($permissionGroup))
@@ -25,10 +25,10 @@
         <div class="row mt-3">
           <div class="d-flex justify-content-center">
             <div>
-              <a href="{{ route('admin.permission_group.edit', $permissionGroup->id) }}" class="btn btn-primary"> Edit </a>
+              <a href="{{ route('admin.permission-group.edit', $permissionGroup->id) }}" class="btn btn-primary"> Edit </a>
             </div>
             <div>
-              <form class="d-inline" method="post" action="{{ route('admin.permission_group.destroy', $permissionGroup->id) }}">
+              <form class="d-inline" method="post" action="{{ route('admin.permission-group.destroy', $permissionGroup->id) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger"> Delete </button>

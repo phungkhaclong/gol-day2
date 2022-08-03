@@ -38,5 +38,5 @@ Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->g
     Route::resource('category', CategoryController::class);
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
-    Route::resource('permission_group', PermissionGroupController::class);
+    Route::resource('permission-group', PermissionGroupController::class);
 });
