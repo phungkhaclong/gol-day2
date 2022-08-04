@@ -24,8 +24,8 @@
                 </tr>
             </thead>
             <tbody>
-                @if (!empty($permission))
-                    @foreach ($permission as $per)
+                @if (!empty($permissions))
+                    @foreach ($permissions as $per)
                         <tr>
                             <td>{{ $per->id }}</td>
                             <td>{{ $per->name }}</td>
@@ -47,6 +47,6 @@
                 </tr>
             </tbody>
         </table>
-        {{ $permission->links() }}
+        {{ $permissions->links() }}
     </div>
 @stop()
