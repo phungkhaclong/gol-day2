@@ -4,14 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionRequest;
-use Illuminate\Http\Request;
 use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\PermissionGroup\PermissionGroupRepository;
 
-
 class PermissionController extends Controller
 {
-
     protected $permissionRepository;
     protected $permissionGroupRepository;
 
@@ -24,7 +21,7 @@ class PermissionController extends Controller
 
     public function index()
     {
-        return view('admin.permission.index',[
+        return view('admin.permission.index', [
             'permissions' => $this->permissionRepository->paginate(),
         ]);
     }
@@ -32,8 +29,7 @@ class PermissionController extends Controller
 
     public function create()
     {
-
-        return view('admin.permission.form',[
+        return view('admin.permission.form', [
             'permissionGroups' => $this->permissionGroupRepository->getAll(),
         ]);
     }
