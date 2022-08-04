@@ -29,10 +29,7 @@
                             <th><i class="fa fa-user" aria-hidden="true"></i></th>
                             <td>{{ $permissionGroup->id }}</td>
                             <td>{{ $permissionGroup->name }}</td>
-
                             <td>
-                                <a href="{{ route('admin.permission-group.show', $permissionGroup->id) }}"
-                                    class="btn btn-success"> Show </a>
                                 <a href="{{ route('admin.permission-group.edit', $permissionGroup->id) }}"
                                     class="btn btn-primary"> Edit </a>
                                 <form class="d-inline" method="post"

@@ -8,19 +8,43 @@
                     <div class="d-flex justify-content-between">
                         <h3> Create permission group: </h3>
                     @else
-                    <form class="container-fluid" method="post"
-                    action="{{ route('admin.permission-group.update', $permissionGroup->id) }}">
-                    @method('PUT')
-                    @csrf
-                    <div class="row">
-                    <div class="d-flex justify-content-between">
-                    <h3> Edit permission group: </h3>
+                        <form class="container-fluid" method="post"
+                            action="{{ route('admin.permission-group.update', $permissionGroup->id) }}">
+                            @method('PUT')
+                            @csrf
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <h3> Edit permission group: </h3>
         @endif
         <a href="{{ route('admin.permission-group.index') }}" class="btn btn-primary">
             Back
         </a>
     </div>
     </div>
+    <table class="table">
+        <thead>
+
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Created_at</th>
+                <th scope="col">Updated_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @if (!empty($permissionGroup))
+            <tr>
+                <td>{{ $permissionGroup['id'] }}</td>
+                <td>{{ $permissionGroup['name'] }}</td>
+                <td>{{ $permissionGroup['created_at'] }}</td>
+                <td>{{ $permissionGroup['updated_at'] }}</td>
+            </tr>
+            @endif
+            </tr>
+        </tbody>
+    </table>
+
     @if (!empty($permissionGroup))
         <div class="container-fluid">
             <p for="id" class="form-label"> ID </p>
