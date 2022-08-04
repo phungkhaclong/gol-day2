@@ -4,6 +4,7 @@
                     <li><a href="{{route('admin.user.index')}}">User management</a></li>
                     <li><a href="{{route('admin.role.index')}}">Role management</a></li>
                     <li><a href="{{route('admin.permission.index')}}">Permission management</a></li>
+                    <li><a href="{{route('admin.permission-group.index')}}">Permission-Group management</a></li>
 
                 </ul>
                 <ul>
