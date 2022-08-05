@@ -22,6 +22,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Permission\PermissionRepositoryInterface::class,
             \App\Repositories\Permission\PermissionRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Role\RoleRepositoryInterface::class,
+            \App\Repositories\Role\RoleRepository::class
+        );
     }
 
     /**

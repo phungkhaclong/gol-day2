@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::factory()->count(50)->create();
+        Role::factory()->count(10)->create();
         for ($i = 0; $i <= 10; $i++) {
             DB::table('roles_permission')->insert([
                 'permission_id' => Permission::select('id')->orderByRaw("RAND()")->first()->id,
