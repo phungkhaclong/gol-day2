@@ -28,8 +28,12 @@
                             <td> {{ $role->name }}</td>
                             <td>
                                 <a href="{{ route('admin.role.show', $role->id) }}" class="btn btn-success"> Show </a>
-                                <button type="button" class="btn btn-primary">Thêm</button>
-                                <button type="button" class="btn btn-danger">Xóa</button>
+                                <a href="{{ route('admin.role.edit', $role->id) }}" class="btn btn-primary"> Edit </a>
+                                <form class="d-inline" method="post" action="{{ route('admin.role.destroy', $role->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"> Delete </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

@@ -54,6 +54,14 @@ class RoleController extends Controller
 
     public function edit($id)
     {
+        if (! $role = $this->roleRepository->findById($id)) {
+            abort(404);
+        }
+
+        return view('admin.role.form', [
+            'roles' => $role,
+            'permissionGroups' => $this->permissionGroupRepository->getAll(),
+        ]);
 
     }
 
@@ -64,6 +72,7 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-
+        $this->roleRepository -> deleteById($id);
+        return redirect()->route('admin.role.index');
     }
 }
