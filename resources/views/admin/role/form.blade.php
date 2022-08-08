@@ -10,15 +10,15 @@
             <form class="container-fluid" method="post" action="{{ route('admin.role.store') }}">
                 @csrf
                 <div class="row">
-                    <div class="d-flex justify-content-between">
-                        <h3> Create role: </h3>
-                    @else
-                        <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
-                            @method('PUT')
-                            @csrf
-                            <div class="row">
-                                <div class="d-flex justify-content-between">
-                                    <h3> Edit role: </h3>
+                <div class="d-flex justify-content-between">
+                <h3> Create role: </h3>
+        @else
+                <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
+                @method('PUT')
+                @csrf
+                <div class="row">
+                <div class="d-flex justify-content-between">
+                <h3> Edit role: </h3>
         @endif
         <a href="{{ route('admin.role.index') }}" class="btn btn-primary">
             Back
@@ -31,6 +31,7 @@
             <p class="form-control"> {{ $role->id }} </p>
         </div>
     @endif
+
     <div class="container-fluid">
         <label for="name" class="form-label"> Name </label>
         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name"

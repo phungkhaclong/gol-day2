@@ -5,14 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Http\Request;
-use App\Repositories\Role\RoleRepositoryInterface;
 use App\Repositories\Role\RoleRepository;
-use App\Repositories\PermissionGroup\PermissionGroupRepositoryInterface;
 use App\Repositories\PermissionGroup\PermissionGroupRepository;
 
 class RoleController extends Controller
 {
-
     protected $roleRepository;
     protected $permissionGroupRepository;
 
@@ -38,7 +35,10 @@ class RoleController extends Controller
 
     public function store(RoleRequest $request)
     {
+        $role = $this->roleRepository->save($request->validated());
+        $role->permissions()->sync($request->input('permission_ids'));
 
+        return redirect()->route('admin.role.show', $role->id);
     }
 
     public function show($id)
@@ -59,15 +59,17 @@ class RoleController extends Controller
         }
 
         return view('admin.role.form', [
-            'roles' => $role,
+            'role' => $role,
             'permissionGroups' => $this->permissionGroupRepository->getAll(),
         ]);
-
     }
 
     public function update(Request $request, $id)
     {
+        $role = $this->roleRepository->save($request->validated(), ['id' => $id]);
+        $role->permissions()->sync($request->input('permission_ids'));
 
+        return redirect()->route('admin.role.index');
     }
 
     public function destroy($id)

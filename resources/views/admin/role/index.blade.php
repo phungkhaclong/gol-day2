@@ -40,5 +40,6 @@
                 @endif
             </tbody>
         </table>
+        {{ $roles->links() }}
     </div>
 @stop()

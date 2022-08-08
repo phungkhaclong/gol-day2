@@ -21,6 +21,46 @@
                     <p>
                         Name: {{ $role->name }}
                     </p>
+                    @php
+                        $selected = collect([]);
+                        if (!empty($role)) {
+                            $selected = $role->permissions;
+                        }
+                        if (!empty($selected)) {
+                            $permissionGroups = [];
+                            foreach ($selected as $permission) {
+                                if (!in_array($permission->permissionGroup, $permissionGroups)) {
+                                    array_push($permissionGroups, $permission->permissionGroup);
+                                }
+                            }
+                        }
+                    @endphp
+                    <p class="form-label"> Permission Groups: </p>
+                    <div class="container-fluid px-0 mt-3">
+                        @if (!empty($permissionGroups))
+                            @foreach ($permissionGroups as $permissionGroup)
+                                <div class="container-fluid border rounded my-2 px-0 py-3 bg-white shadow-sm">
+                                    <div class="container-fluid">
+                                        <p class="form-label"> {{ $permissionGroup->name }} </p>
+                                    </div>
+                                    <hr>
+                                    <div class="container-fluid">
+                                        @if (!empty($permissionGroup->permissions))
+                                            @foreach ($permissionGroup->permissions as $permission)
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="permission_ids[]"
+                                                        id="{{ 'chkbox_' . $permissionGroup->id . '_' . $permission->id }}"
+                                                        value="{{ $permission->id }}"{{ $selected->contains($permission->id) ? ' checked' : '' }}>
+                                                    <label class="form-check-label"
+                                                        for="{{ 'chkbox_' . $permissionGroup->id . '_' . $permission->id }}">{{ $permission->name }}</label>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                     <p>
                         Created at: {{ $role->created_at }}
                     </p>
@@ -28,6 +68,7 @@
                         Updated at: {{ $role->updated_at }}
                     </p>
                 </div>
+
                 <div class="row mt-3">
                     <div class="d-flex justify-content-center">
                         <div>
