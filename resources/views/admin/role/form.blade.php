@@ -1,11 +1,13 @@
 @extends('admin.layouts.admin.master')
 @section('main')
     <div class="col-md-9 main_right_add">
-        @if (Session::has('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-        @endif
+        @if (\Session::has('message'))
+                <div class="alert alert-success">
+                    <ul>
+                        <li style="list-style-type: none">{!! \Session::get('message') !!}</li>
+                    </ul>
+                </div>
+            @endif
         @if (empty($role))
             <form class="container-fluid" method="post" action="{{ route('admin.role.store') }}">
                 @csrf

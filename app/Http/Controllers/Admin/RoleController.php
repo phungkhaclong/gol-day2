@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Http\Request;
 use App\Repositories\Role\RoleRepository;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\PermissionGroup\PermissionGroupRepository;
 
 class RoleController extends Controller
@@ -35,8 +36,17 @@ class RoleController extends Controller
 
     public function store(RoleRequest $request)
     {
-        $role = $this->roleRepository->save($request->validated());
-        $role->permissions()->sync($request->input('permission_ids'));
+        DB::beginTransaction();
+        try {
+            $role = $this->roleRepository->save($request->validated());
+            $role->permissions()->sync($request->input('permission_ids'));
+
+            DB::commit();
+        } catch (Exception $roles) {
+            DB::rollBack();
+
+            throw new Exception($roles->getMessage('massage','error, please try again'));
+        }
 
         return redirect()->route('admin.role.show', $role->id);
     }
@@ -64,10 +74,19 @@ class RoleController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        $role = $this->roleRepository->save($request->validated(), ['id' => $id]);
+        DB::beginTransaction();
+        try {
+            $role = $this->roleRepository->save($request->validated(), ['id' => $id]);
         $role->permissions()->sync($request->input('permission_ids'));
+
+            DB::commit();
+        } catch (Exception $roles) {
+            DB::rollBack();
+
+            throw new Exception($roles->getMessage('massage','error, please try again'));
+        }
 
         return redirect()->route('admin.role.index');
     }
