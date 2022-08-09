@@ -17,6 +17,7 @@
                 <tr>
                     <th style="width: 10%;" scope="col">User</th>
                     <th style="width: 30%;" scope="col">Name</th>
+                    <th style="width: 30%;" scope="col">Permission Count</th>
                     <th style="width: 20%;" scope="col">Action</th>
                 </tr>
             </thead>
@@ -26,13 +27,14 @@
                         <tr>
                             <th><i class="fa fa-user" aria-hidden="true"></i></th>
                             <td> {{ $role->name }}</td>
+                            <td>    {{ $role->permissions->count() }}</td>
                             <td>
                                 <a href="{{ route('admin.role.show', $role->id) }}" class="btn btn-success"> Show </a>
-                                <a href="{{ route('admin.role.edit', $role->id) }}" class="btn btn-primary"> Edit </a>
+                                <a  href="{{ route('admin.role.edit', $role->id) }}"  class="btn btn-primary"> Edit </a>
                                 <form class="d-inline" method="post" action="{{ route('admin.role.destroy', $role->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"> Delete </button>
+                                    <button type="submit" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> Delete </button>
                                 </form>
                             </td>
                         </tr>

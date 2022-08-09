@@ -46,7 +46,7 @@ class RoleController extends Controller
         } catch (Exception $roles) {
             DB::rollBack();
 
-            throw new Exception($roles->getMessage('massage', 'error, please try again'));
+            return redirect()->back()->with('massage', 'error, please try again');
         }
     }
 
@@ -87,14 +87,14 @@ class RoleController extends Controller
         } catch (Exception $roles) {
             DB::rollBack();
 
-            throw new Exception($roles->getMessage('massage', 'error, please try again'));
+            return redirect()->back()->with('massage', 'error, please try again');
         }
     }
 
     public function destroy($id)
     {
         $this->roleRepository->deleteById($id);
-        
+
         return redirect()->route('admin.role.index');
     }
 }

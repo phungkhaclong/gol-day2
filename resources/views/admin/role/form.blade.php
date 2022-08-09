@@ -2,25 +2,25 @@
 @section('main')
     <div class="col-md-9 main_right_add">
         @if (\Session::has('message'))
-                <div class="alert alert-success">
-                    <ul>
-                        <li style="list-style-type: none">{!! \Session::get('message') !!}</li>
-                    </ul>
-                </div>
-            @endif
+            <div class="alert alert-success">
+                <ul>
+                    <li style="list-style-type: none">{!! \Session::get('message') !!}</li>
+                </ul>
+            </div>
+        @endif
         @if (empty($role))
             <form class="container-fluid" method="post" action="{{ route('admin.role.store') }}">
                 @csrf
                 <div class="row">
-                <div class="d-flex justify-content-between">
-                <h3> Create role: </h3>
-        @else
-                <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
-                @method('PUT')
-                @csrf
-                <div class="row">
-                <div class="d-flex justify-content-between">
-                <h3> Edit role: </h3>
+                    <div class="d-flex justify-content-between">
+                        <h3> Create role: </h3>
+                    @else
+                        <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
+                            @method('PUT')
+                            @csrf
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <h3> Edit role: </h3>
         @endif
         <a href="{{ route('admin.role.index') }}" class="btn btn-primary">
             Back
@@ -76,15 +76,16 @@
                     </div>
                 </div>
             @endforeach
+            <div class="row mt-3">
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">
+                        Save
+                    </button>
+                </div>
+            </div>
         @endif
     </div>
-    <div class="row mt-3">
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">
-                Save
-            </button>
-        </div>
-    </div>
+
     </form>
 
     </div>
