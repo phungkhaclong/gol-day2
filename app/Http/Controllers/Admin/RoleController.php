@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function create()
     {
         return view('admin.role.form', [
-            'permissionGroups' => $this->permissionGroupRepository->getAll(),
+            'permissionGroups' => $this->permissionGroupRepository->with('permissions')->get(),
         ]);
     }
 
@@ -40,15 +40,14 @@ class RoleController extends Controller
         try {
             $role = $this->roleRepository->save($request->validated());
             $role->permissions()->sync($request->input('permission_ids'));
-
             DB::commit();
+            return redirect()->route('admin.role.show', $role->id);
         } catch (Exception $roles) {
             DB::rollBack();
 
             throw new Exception($roles->getMessage('massage','error, please try again'));
         }
 
-        return redirect()->route('admin.role.show', $role->id);
     }
 
     public function show($id)
@@ -79,16 +78,17 @@ class RoleController extends Controller
         DB::beginTransaction();
         try {
             $role = $this->roleRepository->save($request->validated(), ['id' => $id]);
-        $role->permissions()->sync($request->input('permission_ids'));
+            $role->permissions()->sync($request->input('permission_ids'));
 
             DB::commit();
+            return redirect()->route('admin.role.index');
         } catch (Exception $roles) {
             DB::rollBack();
 
             throw new Exception($roles->getMessage('massage','error, please try again'));
         }
 
-        return redirect()->route('admin.role.index');
+
     }
 
     public function destroy($id)
