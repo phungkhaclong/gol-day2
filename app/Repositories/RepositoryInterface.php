@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 interface RepositoryInterface
-
 {
     public function with($relations);
 
