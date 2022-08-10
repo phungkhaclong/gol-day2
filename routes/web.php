@@ -44,13 +44,3 @@ Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->g
     Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
 
 });
-
-// Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
-
-// Route::get('lang/{lang}', function ($lang) {
-
-//     App::setLocale($lang);
-// });
-// Route::group(['middleware' => 'Lang'], function() {
-//     Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
-// });
