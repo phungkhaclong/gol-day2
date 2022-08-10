@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LangController;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +41,16 @@ Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->g
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('permission-group', PermissionGroupController::class);
+    Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
+
 });
+
+// Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
+
+// Route::get('lang/{lang}', function ($lang) {
+
+//     App::setLocale($lang);
+// });
+// Route::group(['middleware' => 'Lang'], function() {
+//     Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
+// });
