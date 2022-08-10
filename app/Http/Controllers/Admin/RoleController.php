@@ -42,7 +42,7 @@ class RoleController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.role.show', $role->id);
+            return redirect()->route('admin.role.show', $role->id)->with('message', 'Successful added');
         } catch (Exception $roles) {
             DB::rollBack();
 
@@ -83,7 +83,7 @@ class RoleController extends Controller
 
             DB::commit();
 
-            return redirect()->route('admin.role.index');
+            return redirect()->route('admin.role.index')->with('message', 'Successful update');
         } catch (Exception $roles) {
             DB::rollBack();
 
@@ -93,8 +93,9 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
+        $this->roleRepository->findById($id)->permissions()->detach();
         $this->roleRepository->deleteById($id);
 
-        return redirect()->route('admin.role.index');
+        return redirect()->route('admin.role.index')->with('message', 'Successful delete');
     }
 }

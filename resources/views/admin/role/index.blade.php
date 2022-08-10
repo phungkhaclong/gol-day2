@@ -16,8 +16,9 @@
             <thead>
                 <tr>
                     <th style="width: 10%;" scope="col">User</th>
+                    <th style="width: 10%;" scope="col">ID</th>
                     <th style="width: 30%;" scope="col">Name</th>
-                    <th style="width: 30%;" scope="col">Permission Count</th>
+                    <th style="width: 20%;" scope="col">Permission Count</th>
                     <th style="width: 20%;" scope="col">Action</th>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                     @foreach ($roles as $role)
                         <tr>
                             <th><i class="fa fa-user" aria-hidden="true"></i></th>
+                            <td> {{ $role->id }}</td>
                             <td> {{ $role->name }}</td>
                             <td>    {{ $role->permissions->count() }}</td>
                             <td>
