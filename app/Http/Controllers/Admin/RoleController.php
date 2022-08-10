@@ -93,9 +93,21 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-        $this->roleRepository->findById($id)->permissions()->detach();
-        $this->roleRepository->deleteById($id);
+        DB::beginTransaction();
+        try {
+            $this->roleRepository->findById($id)->permissions()->detach();
+            $this->roleRepository->deleteById($id);
 
-        return redirect()->route('admin.role.index')->with('message', 'Successful delete');
+            DB::commit();
+
+            return redirect()->route('admin.role.index')->with('message', 'Successful delete');
+        } catch (Exception $roles) {
+            DB::rollBack();
+
+            return redirect()->back()->with('massage', 'error, please try again');
+        }
+
+
+
     }
 }
