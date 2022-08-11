@@ -1,7 +1,4 @@
 <?php
-
-// lang/en/messages.php
-
 return [
     "list" => "List Role",
     "edit-role" => "Edit Role",

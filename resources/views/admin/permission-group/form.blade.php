@@ -6,18 +6,18 @@
                 @csrf
                 <div class="row">
                     <div class="d-flex justify-content-between">
-                        <h3> Create permission group: </h3>
+                        <h3> {{ __('per-group.create-per') }}: </h3>
                     @else
                         <form class="container-fluid" method="post"
-                            action="{{ route('admin.permission-group.update', $permissionGroup->id) }}">
-                            @method('PUT')
-                            @csrf
-                            <div class="row">
-                                <div class="d-flex justify-content-between">
-                                    <h3> Edit permission group: </h3>
+                action="{{ route('admin.permission-group.update', $permissionGroup->id) }}">
+                @method('PUT')
+                @csrf
+                <div class="row">
+                <div class="d-flex justify-content-between">
+                <h3>  {{ __('per-group.edit-per') }}: </h3>
         @endif
         <a href="{{ route('admin.permission-group.index') }}" class="btn btn-primary">
-            Back
+            {{ __('per-group.back') }}
         </a>
     </div>
     </div>
@@ -26,9 +26,9 @@
 
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Created_at</th>
-                <th scope="col">Updated_at</th>
+                <th scope="col"> {{ __('per-group.name') }}</th>
+                <th scope="col">{{ __('per-group.created_at') }}</th>
+                <th scope="col">{{ __('per-group.updated_at') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@
         </div>
     @endif
     <div class="container-fluid">
-        <label for="name" class="form-label"> Name </label>
+        <label for="name" class="form-label"> {{ __('per-group.name') }} </label>
         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name"
             placeholder="" value="{{ old('name', $permissionGroup->name ?? '') }}">
         @error('name')
@@ -64,7 +64,7 @@
     <div class="row mt-3">
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary">
-                Save
+                {{ __('per-group.save') }}
             </button>
         </div>
     </div>

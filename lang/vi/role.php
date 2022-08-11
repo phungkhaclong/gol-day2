@@ -1,7 +1,4 @@
 <?php
-
-// lang/en/messages.php
-
 return [
     "list" => "Danh sách vai trò",
     "edit-role" => "Chỉnh sửa vai trò",
@@ -9,14 +6,14 @@ return [
     "add" => "Thêm",
     "user" => "Người dùng",
     "name" => "Tên",
-    "per" => "Permission count",
-    "action" => "Action",
-    "show" => "Show",
-    "edit" => "Edit",
-    "delete" => "Delete",
-    "back" => "Back",
-    "save" => "Save",
-    "per-group" => "Permision Group",
+    "per" => "Tông số quyền",
+    "action" => "Hành động",
+    "show" => "Xem",
+    "edit" => "Sửa",
+    "delete" => "Xóa",
+    "back" => "Quay lại",
+    "save" => "Lưu",
+    "per-group" => "Loại quyền",
 
 ];
 

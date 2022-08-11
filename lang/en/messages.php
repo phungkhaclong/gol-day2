@@ -1,7 +1,4 @@
 <?php
-
-// lang/en/messages.php
-
 return [
     "user" => "User Management",
     "role" => "Role Management",
