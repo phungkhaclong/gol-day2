@@ -69,7 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'users_roles');
     }
 
     public function tags()
@@ -85,6 +85,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function hasPermission(Permission $permission)
+    {
+        return $this->hasRoles($permission->roles);
+    }
+
+    public function hasRoles($roles)
+    {
+        if (is_array($roles) || is_object($roles)) {
+            return $roles->intersect($this->roles)->count();
+        }
+
+        return $this->roles->contains('name', $roles);
     }
 
     public function isAdmin()
