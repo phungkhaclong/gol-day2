@@ -5,11 +5,11 @@
         <table class="table table-bordered">
             <div class="row">
                 <div class="col-md-2">
-                    <p><span>List Permission</span> </p>
+                    <p><span>{{ __('permission.list') }}</span> </p>
                 </div>
                 <div class="col-md-10">
                     <div class="main_but">
-                        <button class="btn btn-primary"><a href="{{ route('admin.permission.create') }}">add permision</a>
+                        <button class="btn btn-primary"><a href="{{ route('admin.permission.create') }}">{{ __('permission.add') }}</a>
                         </button>
                     </div>
                 </div>
@@ -17,10 +17,10 @@
             <thead>
                 <tr>
                     <th style="width: 10%;" scope="col">Id</th>
-                    <th style="width: 20%;"scope="col">Name</th>
-                    <th style="width: 20%;"scope="col">key</th>
-                    <th style="width: 30%;"scope="col">Permission_Group_id</th>
-                    <th style="width: 20%;" scope="col">Action</th>
+                    <th style="width: 20%;"scope="col">{{ __('permission.name') }}</th>
+                    <th style="width: 20%;"scope="col">{{ __('permission.key') }}</th>
+                    <th style="width: 30%;"scope="col">{{ __('permission.per') }}</th>
+                    <th style="width: 20%;" scope="col">{{ __('permission.action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,12 +33,12 @@
                             <td>{{ $per->permission_group_id }}</td>
                             <td>
                                 <a href="{{ route('admin.permission.edit', $per->id) }}" class="btn btn-primary">
-                                    Edit </a>
+                                    {{ __('permission.edit') }} </a>
                                 <form class="d-inline" method="post"
                                     action="{{ route('admin.permission.destroy', $per->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"> Delete </button>
+                                    <button type="submit" class="btn btn-danger">{{ __('permission.delete') }} </button>
                                 </form>
                             </td>
                         </tr>

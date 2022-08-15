@@ -12,18 +12,18 @@
             <form class="container-fluid" method="post" action="{{ route('admin.role.store') }}">
                 @csrf
                 <div class="row">
-                <div class="d-flex justify-content-between">
-                <h3> Create role: </h3>
-        @else
-                <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
-                @method('PUT')
-                @csrf
-                <div class="row">
-                <div class="d-flex justify-content-between">
-                <h3> Edit role: </h3>
+                    <div class="d-flex justify-content-between">
+                        <h3> {{ __('role.create-role') }}: </h3>
+                    @else
+                        <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
+                            @method('PUT')
+                            @csrf
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <h3> {{ __('role.edit-role') }}: </h3>
         @endif
         <a href="{{ route('admin.role.index') }}" class="btn btn-primary">
-            Back
+            {{ __('role.back') }}
         </a>
     </div>
     </div>
@@ -35,7 +35,7 @@
     @endif
 
     <div class="container-fluid">
-        <label for="name" class="form-label"> Name </label>
+        <label for="name" class="form-label"> {{ __('role.name') }} </label>
         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name"
             placeholder="" value="{{ old('name', $role->name ?? '') }}">
         @error('name')
@@ -53,7 +53,7 @@
     }
     @endphp
     <div class="container-fluid mt-3">
-        <label for="" class="form-label"> Permission Groups </label>
+        <label for="" class="form-label"> {{ __('role.per-group') }}</label>
         @if (!empty($permissionGroups))
             @foreach ($permissionGroups as $permissionGroup)
                 <div class="container-fluid border rounded my-2 px-0 py-3 bg-white shadow-sm">
@@ -79,7 +79,7 @@
             <div class="row mt-3">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">
-                        Save
+                        {{ __('role.save') }}
                     </button>
                 </div>
             </div>
