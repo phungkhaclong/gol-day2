@@ -12,7 +12,5 @@
          <li><a href="{{ route('admin.product.index') }}"> {{ __('messages.category') }}</a></li>
          <li><a href="{{ route('admin.category.index') }}">{{ __('messages.product') }}t</a></li>
      </ul>
-     <a href="{{ route('admin.lang', ['lang' => 'vi']) }}">Tiếng Việt</a>
-     <a href="{{ route('admin.lang', ['lang' => 'en']) }}">Tiếng Anh</a>
 
  </div>

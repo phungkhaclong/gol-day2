@@ -41,6 +41,4 @@ Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->g
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('permission-group', PermissionGroupController::class);
-    Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
-
 });
