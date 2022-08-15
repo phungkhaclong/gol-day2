@@ -106,8 +106,5 @@ class RoleController extends Controller
 
             return redirect()->back()->with('massage', 'error, please try again');
         }
-
-
-
     }
 }

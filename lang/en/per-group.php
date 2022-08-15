@@ -1,4 +1,5 @@
 <?php
+
 return [
     "list" => "List Permission group",
     "edit-per" => "Edit permission group",
@@ -17,4 +18,3 @@ return [
     "permission" => "Permission",
     "select-per" => "Permission-Group",
 ];
-

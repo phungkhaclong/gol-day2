@@ -1,4 +1,5 @@
 <?php
+
 return [
     "list" => "Danh sách loại quyền",
     "edit-per" => "Chỉnh sửa loại quyền",
@@ -19,4 +20,3 @@ return [
     "permission" => "Loại quyền",
     "select-per" => "Chọn loại quyền",
 ];
-

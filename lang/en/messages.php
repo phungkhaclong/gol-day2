@@ -1,4 +1,5 @@
 <?php
+
 return [
     "user" => "User Management",
     "role" => "Role Management",
@@ -12,4 +13,3 @@ return [
     "action" => "Action",
 
 ];
-

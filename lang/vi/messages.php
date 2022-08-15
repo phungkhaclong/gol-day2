@@ -1,4 +1,5 @@
 <?php
+
 return [
     "user" => "Quản lý người dùng",
     "role" => "Quản lý vai trò",

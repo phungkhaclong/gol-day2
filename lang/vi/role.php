@@ -1,4 +1,5 @@
 <?php
+
 return [
     "list" => "Danh sách vai trò",
     "edit-role" => "Chỉnh sửa vai trò",
@@ -16,4 +17,3 @@ return [
     "per-group" => "Loại quyền",
 
 ];
-
