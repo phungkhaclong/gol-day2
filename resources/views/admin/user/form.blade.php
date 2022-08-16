@@ -11,22 +11,22 @@
         @if (empty($user))
             <form class="container-fluid" method="post" action="{{ route('admin.user.store') }}">
                 @csrf
-                    <div class="row">
+                <div class="row">
                     <div class="d-flex justify-content-between">
-                    <h3> {{ __('user.Create user') }} </h3>
-                @elseif ($isShow)
-                    <form class="container-fluid" action="">
-                    <div class="row">
-                    <div class="d-flex justify-content-between">
-                    <h3> {{ __('user.Show user:') }} </h3>
-                @else
-                    <form class="container-fluid" method="post"
-                    action="{{ route('admin.user.update', $user->id) }}">
-                    @method('PUT')
-                    @csrf
-                    <div class="row">
-                    <div class="d-flex justify-content-between">
-                    <h3> {{ __('user.Edit user:') }} </h3>
+                        <h3> {{ __('user.Create user') }} </h3>
+                    @elseif (!empty($isShow))
+                        <form class="container-fluid" action="">
+                            <div class="row">
+                             <div class="d-flex justify-content-between">
+                            <h3> {{ __('user.Show user:') }} </h3>
+                    @else
+                        <form class="container-fluid" method="post"
+                            action="{{ route('admin.user.update', $user->id) }}">
+                            @method('PUT')
+                            @csrf
+                            <div class="row">
+                            <div class="d-flex justify-content-between">
+                            <h3> {{ __('user.Edit user:') }} </h3>
         @endif
         <a href="{{ route('admin.user.index') }}" class="btn btn-primary">
             {{ __('user.Back') }}
@@ -39,20 +39,22 @@
             <input name="id" id="id" class="form-control mb-2" value="{{ $user->id }}" disabled>
         </div>
     @endif
+
     <div class="container-fluid">
         <label for="name" class="form-label"> {{ __('user.Name') }} </label>
         <input name="name" type="text" class="form-control mb-2 @error('name') is-invalid @enderror" id="name"
-            placeholder="" value="{{ old('name', $user->name ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            placeholder="" value="{{ old('name', $user->name ?? '') }}">
         @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
     </div>
+
     <div class="container-fluid">
         <label for="email" class="form-label"> {{ __('user.Email') }} </label>
         <input name="email" type="text" class="form-control mb-2 @error('email') is-invalid @enderror" id="email"
-            placeholder="" value="{{ old('email', $user->email ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            placeholder="" value="{{ old('email', $user->email ?? '') }}">
         @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -62,8 +64,7 @@
     <div class="container-fluid">
         <label for="username" class="form-label"> {{ __('user.Username') }} </label>
         <input name="username" type="text" class="form-control mb-2 @error('username') is-invalid @enderror"
-            id="username" placeholder=""
-            value="{{ old('username', $user->username ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            id="username" placeholder="" value="{{ old('username', $user->username ?? '') }}">
         @error('username')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -76,7 +77,7 @@
                 <div class="container-fluid">
                     <label for="password" class="form-label"> {{ __('user.Password') }} </label>
                     <input name="password" type="password" class="form-control mb-2 @error('password') is-invalid @enderror"
-                        id="password" placeholder=""{{ $isShow ? ' readonly' : '' }}>
+                        id="password" placeholder="">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -102,7 +103,7 @@
                 @foreach ($roles as $role)
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="role_ids[]" id="{{ 'checkbox_' . $role->id }}"
-                            value="{{ $role->id }}"{{ $selectedRoles->contains($role->id) ? ' checked' : '' }}{{ $isShow ? ' readonly' : '' }}>
+                            value="{{ $role->id }}"{{ $selectedRoles->contains($role->id) ? ' checked' : '' }}>
                         <label class="form-check-label" for="{{ 'checkbox_' . $role->id }}">{{ $role->name }}</label>
                     </div>
                 @endforeach
@@ -112,7 +113,7 @@
     <div class="container-fluid">
         <label for="address" class="form-label"> {{ __('user.Address') }} </label>
         <input name="address" type="text" class="form-control mb-2 @error('address') is-invalid @enderror" id="address"
-            placeholder="" value="{{ old('address', $user->address ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            placeholder="" value="{{ old('address', $user->address ?? '') }}">
         @error('address')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -147,7 +148,7 @@
     <div class="container-fluid">
         <label for="code" class="form-label"> {{ __('user.Code') }} </label>
         <input name="code" type="text" class="form-control mb-2 @error('code') is-invalid @enderror"
-            id="code" placeholder="" value="{{ old('code', $user->code ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            id="code" placeholder="" value="{{ old('code', $user->code ?? '') }}">
         @error('code')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -157,8 +158,7 @@
     <div class="container-fluid">
         <label for="social_type" class="form-label"> {{ __('user.Social Type') }} </label>
         <input name="social_type" type="text" class="form-control mb-2 @error('social_type') is-invalid @enderror"
-            id="social_type" placeholder=""
-            value="{{ old('social_type', $user->social_type ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            id="social_type" placeholder="" value="{{ old('social_type', $user->social_type ?? '') }}">
         @error('social_type')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -168,8 +168,7 @@
     <div class="container-fluid">
         <label for="social_id" class="form-label"> {{ __('user.Social Id') }} </label>
         <input name="social_id" type="text" class="form-control mb-2 @error('social_id') is-invalid @enderror"
-            id="social_id" placeholder=""
-            value="{{ old('social_id', $user->social_id ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            id="social_id" placeholder="" value="{{ old('social_id', $user->social_id ?? '') }}">
         @error('social_id')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -179,8 +178,7 @@
     <div class="container-fluid">
         <label for="social_name" class="form-label"> {{ __('user.Social Name') }}</label>
         <input name="social_name" type="text" class="form-control mb-2 @error('social_name') is-invalid @enderror"
-            id="social_name" placeholder=""
-            value="{{ old('social_name', $user->social_name ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            id="social_name" placeholder="" value="{{ old('social_name', $user->social_name ?? '') }}">
         @error('social_name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -191,7 +189,7 @@
         <label for="social_nickname" class="form-label"> {{ __('user.Social Nickname') }} </label>
         <input name="social_nickname" type="text"
             class="form-control mb-2 @error('social_nickname') is-invalid @enderror" id="social_nickname" placeholder=""
-            value="{{ old('social_nickname', $user->social_nickname ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            value="{{ old('social_nickname', $user->social_nickname ?? '') }}">
         @error('social_nickname')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -202,7 +200,7 @@
         <label for="social_avatar" class="form-label"> {{ __('user.Social Avatar') }}</label>
         <input name="social_avatar" type="text"
             class="form-control mb-2 @error('social_avatar') is-invalid @enderror" id="social_avatar" placeholder=""
-            value="{{ old('social_avatar', $user->social_avatar ?? '') }}"{{ $isShow ? ' readonly' : '' }}>
+            value="{{ old('social_avatar', $user->social_avatar ?? '') }}">
         @error('social_avatar')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -212,8 +210,7 @@
     <div class="container-fluid">
         <label for="description" class="form-label"> {{ __('user.Description') }} </label>
         <textarea name="description" type="text" class="form-control mb-2 @error('description') is-invalid @enderror"
-            id="description" placeholder=""
-            value="{{ old('description', $user->description ?? '') }}"{{ $isShow ? ' readonly' : '' }}> </textarea>
+            id="description" placeholder="" value="{{ old('description', $user->description ?? '') }}"> </textarea>
         @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -232,7 +229,7 @@
                 disabled>
         </div>
     @endif
-    @if (!$isShow)
+    @if (!empty($isShow))
         <div class="row mt-3">
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">
@@ -242,6 +239,8 @@
         </div>
     @endif
     </form>
+
+
     </div>
 
 @stop()
