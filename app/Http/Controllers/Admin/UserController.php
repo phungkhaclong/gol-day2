@@ -73,6 +73,7 @@ class UserController extends Controller
         return view('admin.user.form', [
             'user' => $user,
             'roles' => $this->roleRepository->getAll(),
+            'isShow' => true,
         ]);
     }
 
@@ -85,6 +86,7 @@ class UserController extends Controller
         return view('admin.user.form', [
             'user' => $user,
             'roles' => $this->roleRepository->getAll(),
+            'isShow' => false,
         ]);
     }
 

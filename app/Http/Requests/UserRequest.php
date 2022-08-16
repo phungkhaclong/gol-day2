@@ -26,9 +26,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required',  'min:2','not_regex:/^[@#$%&*]/',new ValidateUserName(),],
-            'email' => ['required','email',Rule::unique('users')->ignore($this->user), ],
-            'username' => ['required', Rule::unique('users')->ignore($this->user),   ],
+            'name' => ['required', 'min:2','not_regex:/^[@#$%&]/',new ValidateUserName()],
+            'email' => ['required','email',Rule::unique('users')->ignore($this->user)],
+            'username' => ['required', Rule::unique('users')->ignore($this->user)],
             'password' => [ 'required_with:password_confirmation', 'min:8','max:200',  'regex:/^[0-9@#$%&*]+$/','confirmed', ],
             'role_ids' => ['required',],
         ];
