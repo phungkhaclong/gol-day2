@@ -7,14 +7,11 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use App\Services\MailService;
 use Illuminate\Support\Facades\File;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Role\RoleRepository;
 use App\Models\User;
-
-
 
 class UserController extends Controller
 {
@@ -46,11 +43,8 @@ class UserController extends Controller
         ]);
     }
 
-
     public function store(UserRequest $request)
     {
-
-
         $data = $request->validated();
         $data['verified_at'] = now();
         $data['type'] = User::TYPE['admin'];
@@ -72,7 +66,6 @@ class UserController extends Controller
 
     public function show($id)
     {
-
         if (! $user = $this->userRepository->findById($id)) {
             abort(404);
         }
@@ -80,7 +73,6 @@ class UserController extends Controller
         return view('admin.user.form', [
             'user' => $user,
             'roles' => $this->roleRepository->getAll(),
-            'isShow' => true,
         ]);
     }
 
@@ -93,7 +85,6 @@ class UserController extends Controller
         return view('admin.user.form', [
             'user' => $user,
             'roles' => $this->roleRepository->getAll(),
-            'isShow' => false,
         ]);
     }
 
@@ -143,10 +134,8 @@ class UserController extends Controller
 
     public function formSendMail(Request $request)
     {
-        $UserAll = $this->userRepository->getAll();
-        // dd($UserAll);
-        $users = $request->email == 'all_user' ? collect($UserAll) : collect($UserAll)->where('email', $request->email);
-        dd($users);
+        $users = $this->userRepository->getAll();
+        $users = $request->email == 'all_user' ? collect($users) : collect($users)->where('email', $request->email);
         $path = public_path('uploads');
         $attachment = $request->file('attachment');
 
@@ -171,10 +160,7 @@ class UserController extends Controller
 
     public function showmail()
     {
-        $users = session()->get('users');
+        $users = $this->userRepository->getAll();
         return view('admin.mails.sendmail', compact('users'));
     }
-
-
-
 }
