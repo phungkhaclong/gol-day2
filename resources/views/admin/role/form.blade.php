@@ -12,15 +12,15 @@
             <form class="container-fluid" method="post" action="{{ route('admin.role.store') }}">
                 @csrf
                 <div class="row">
-                    <div class="d-flex justify-content-between">
-                        <h3> {{ __('role.create-role') }}: </h3>
-                    @else
-                        <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
-                            @method('PUT')
-                            @csrf
-                            <div class="row">
-                                <div class="d-flex justify-content-between">
-                                    <h3> {{ __('role.edit-role') }}: </h3>
+                <div class="d-flex justify-content-between">
+                <h3> {{ __('role.create-role') }}: </h3>
+                @else
+                <form class="container-fluid" method="post" action="{{ route('admin.role.update', $role->id) }}">
+                @method('PUT')
+                @csrf
+                <div class="row">
+                <div class="d-flex justify-content-between">
+                <h3> {{ __('role.edit-role') }}: </h3>
         @endif
         <a href="{{ route('admin.role.index') }}" class="btn btn-primary">
             {{ __('role.back') }}

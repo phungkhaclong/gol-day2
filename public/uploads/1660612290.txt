@@ -1,0 +1,150 @@
+ step 1: larave 
+- php artisan route:list   ----xem toàn bộ routes có trong framework
+- php artisan make:controller UserController -r   --- tạo một controller có cả 7 funtion CRUD
+- php artisan make:migration create_users_table -m    ---Tạo một migrate có cả model
+- php artisan migrate   --- lệnh chạy migration
+- php artisan migrate:refresh   ----Câu lệnh quay trở lại dựa trên dữ liệu đã ghi vào migrations table và chạy lại migration
+- php artisan migrate:fresh    ----Câu lệnh xóa hết các bảng, không quan tâm về rollback và chạy lại migration
+- php artisan make:seeder UsersTableSeeder   ----Câu lệnh tạo file Seeder trong Laravel
+- php artisan db:seed --class=UsersTableSeeder   ----Câu lệnh chạy file Seeder cụ thể với tên class trong Laravel
+- php artisan db:seed     ----Câu lệnh chạy file DatabaseSeeder, có thể gọi tới nhiều file với class seeder cụ thể
+- php artisan migrate:fresh --seed     ---Câu lệnh để xóa tất cả các bảng dữ liệu, sau đó chạy lại migration sau đó chạy file DatabaseSeeder, có thể gọi tới nhiều class seeder
+- php artisan make:model User -mcr   ----Câu lệnh kết hợp tạo Model, Controller + 7 functions CRUD và Migration trong PHP Framework Laravel
+- php artisan migrate:fresh --seed
+
+git init
+-> khởi tạo repo dưới local
+
+Step 2: git checkout -b longpk
+-> tạo nhánh mới tên là longpk
+Step 3: Commit code
+ - git add .   -> git tất cả các file 
+ - git commit -m " up code "
+ - git brand   -> xem danh sách brand 
+ Step 4 : add remote
+ - git remote add origin https://github.com/phungkhaclong/gol-git.git
+ - gt remote -v   -> xem danh sách remote
+ Step 5 : Push code
+ - git push origin
+ step 6 : cài đặt môi trường docker
+- docker-compose build --no-cache php-fpm
+- docker-compose build --no-cache nginx
+- docker-compose build --no-cache mysql
+- docker-compose build --no-cache phpmyadmin
+- docker-compose build --no-cache redis
+- docker-compose up -d php-fpm nginx mysql phpmyadmin redis
+- docker exec f416f7321dce nginx -s reload
+- docker-compose restart nginx
+- docker-compose up -d --build --force-recreate mysql
+
+ step 7 : lệnh khởi chạy docker mỗi lần mới
+- docker exec -it laradock_workspace_1 bash
+- docker-compose up -d php-fpm nginx mysql phpmyadmin redis
+ step 8: khi mà đã ổn code thì mình megre vào nhánh chính (master)
+- git pull origin master
+- git stash    -- kiểu copy lại các code mà mình code thêm sau khi push
+- git stash pop   -- paste lại code mà mình đã git stash
+ step 9: link 
+- https://github.com/phamkykhoi/laradock/blob/master/README.md     --cài laradoc
+ step 10: lệnh git artisan migrate
+- php artisan migrate:generate
+- composer require --dev "kitloong/laravel-migrations-generator"hp artisan migrate:generate
+- composer require --dev "kitloong/laravel-migrations-generator"
+- git stash   ---dừng thay đổi code
+- git status   ----
+- ./vendor/bin/pint
+
+
+
+@extends('admin.layouts.admin.master')
+@section('main')
+    <div class="col-md-9 main_right">
+        @if (\Session::has('message'))
+        <div class="alert alert-success">
+            <ul>
+                <li style="list-style-type: none">{!! \Session::get('message') !!}</li>
+            </ul>
+        </div>
+    @endif
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between">
+                <p style="font-weight: bold;"> Showing Role: </p>
+                <div>
+                    <a href="{{ route('admin.role.index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            @if (!empty($role))
+                <div class="container-fluid">
+                    <p>
+                        ID: {{ $role->id }}
+                    </p>
+                    <p>
+                        Name: {{ $role->name }}
+                    </p>
+                    @php
+                        $selected = collect([]);
+                        if (!empty($role)) {
+                            $selected = $role->permissions;
+                        }
+                        if (!empty($selected)) {
+                            $permissionGroups = [];
+                            foreach ($selected as $permission) {
+                                if (!in_array($permission->permissionGroup, $permissionGroups)) {
+                                    array_push($permissionGroups, $permission->permissionGroup);
+                                }
+                            }
+                        }
+                    @endphp
+                    <p class="form-label"> Permission Groups: </p>
+                    <div class="container-fluid px-0 mt-3">
+                        @if (!empty($permissionGroups))
+                            @foreach ($permissionGroups as $permissionGroup)
+                                <div class="container-fluid border rounded my-2 px-0 py-3 bg-white shadow-sm">
+                                    <div class="container-fluid">
+                                        <p class="form-label"> {{ $permissionGroup->name }} </p>
+                                    </div>
+                                    <hr>
+                                    <div class="container-fluid">
+                                        @if (!empty($permissionGroup->permissions))
+                                            @foreach ($permissionGroup->permissions as $permission)
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="permission_ids[]"
+                                                        id="{{ 'chkbox_' . $permissionGroup->id . '_' . $permission->id }}"
+                                                        value="{{ $permission->id }}"{{ $selected->contains($permission->id) ? ' checked' : '' }}>
+                                                    <label class="form-check-label"
+                                                        for="{{ 'chkbox_' . $permissionGroup->id . '_' . $permission->id }}">{{ $permission->name }}</label>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <p>
+                        Created at: {{ $role->created_at }}
+                    </p>
+                    <p>
+                        Updated at: {{ $role->updated_at }}
+                    </p>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="d-flex justify-content-center">
+                        <div>
+                            <a href="{{ route('admin.role.edit', $role->id) }}" class="btn btn-primary"> Edit </a>
+                        </div>
+                        <div>
+                            <form class="d-inline" method="post" action="{{ route('admin.role.destroy', $role->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"> Delete </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+@stop()
+

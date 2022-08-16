@@ -25,9 +25,11 @@
             @csrf
         <select name="email" class="form-select" aria-label="Default select example">
             <option value="all_user" selected > Tất cả user...</option>
-            @foreach($users as $value)
+            @if(!empty($users))
+            @foreach($users as $key=>$value)
                 <option value="{{$value['email']}}">{{$value['name']}}</option>
             @endforeach
+            @endif
         </select>
         <div class="form-group">
             <label for="attachment"> File đính kèm </label>

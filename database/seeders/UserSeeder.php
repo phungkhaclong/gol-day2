@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             DB::table('users_roles')->insert([
                 'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,
-            'roles_id' => Role::select('id')->orderByRaw("RAND()")->first()->id,
+            'role_id' => Role::select('id')->orderByRaw("RAND()")->first()->id,
                 'created_at' => now(),
             'updated_at' => now(),
             ]);
