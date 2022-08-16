@@ -15,7 +15,7 @@ class Answer extends Model
         'correct',
     ];
 
-    public function question()
+    public function questions()
     {
         return $this->belongTo(Question::class);
     }
