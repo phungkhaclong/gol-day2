@@ -52,7 +52,7 @@
                             <td>
                                 <a href="{{ route('admin.user.show', $value->id) }}" class="btn btn-success"> {{ __('user.Show') }} </a>
                                 <a  href="{{ route('admin.user.edit', $value->id) }}"  class="btn btn-primary"> {{ __('user.Edit') }} </a>
-                                <form class="d-inline" method="post" action="{{ route('admin.role.destroy', $role->id) }}">
+                                <form class="d-inline" method="post" action="{{ route('admin.user.destroy', $value->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> {{ __('user.Delete') }} </button>
