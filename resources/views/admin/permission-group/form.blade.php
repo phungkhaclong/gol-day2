@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin.master')
 @section('main')
-    <div class="col-md-9 main_right_add">
+    <div class="container-fluid">
         @if (empty($permissionGroup))
             <form class="container-fluid" method="post" action="{{ route('admin.permission-group.store') }}">
                 @csrf

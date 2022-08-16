@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin.master')
 @section('main')
-        <div class="col-md-9 main_right">
+        <div class="container-fluid">
             <table class="table table-bordered">
                 <div class="row">
                     <div class="col-md-2">

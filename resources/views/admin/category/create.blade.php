@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin.master')
 @section('main')
-<div class="col-md-9 main_right_add">
+<div class="container-fluid">
    <div class="container">
     <div class="row">
         <div class="col-md-2">
