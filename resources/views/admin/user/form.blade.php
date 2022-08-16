@@ -229,7 +229,6 @@
                 disabled>
         </div>
     @endif
-    @if (!empty($isShow))
         <div class="row mt-3">
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">
@@ -237,10 +236,7 @@
                 </button>
             </div>
         </div>
-    @endif
     </form>
-
-
     </div>
 
 @stop()
