@@ -39,7 +39,6 @@ class UserController extends Controller
     {
         return view('admin.user.form', [
             'roles' => $this->roleRepository->getAll(),
-            'isShow' => false,
         ]);
     }
 
