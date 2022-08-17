@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         return view('admin.category.form', [
             'category' => $category,
-            'show' => "show",
+            'isShow' => true,
         ]);
     }
 

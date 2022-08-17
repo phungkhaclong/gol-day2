@@ -57,7 +57,7 @@
             </span>
         @enderror
     </div>
-    @if (!isset($show))
+    @if (!isset($isShow))
         <div class="row mt-3">
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">
