@@ -2,7 +2,7 @@
 @section('main')
 
         <div class="container-fluid">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-all">
                 <div class="row">
                     <div class="col-md-2">
                         <p><span>List Category</span> </p>

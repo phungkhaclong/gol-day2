@@ -1,6 +1,21 @@
+.table-all tr td{
+    text-align: center;
+}
+.table-all tr th{
+    text-align: center;
+}
+.main_but{
+    float: right;
+    padding-right: 10%;
+    margin-bottom: 10px;
+    display: flex;
+    margin-top: 10px;
+    color: aliceblue;
+}
+
 a{
     text-decoration: none;
-    color: #000000;
+    color: #ffffff;
 }
 .main_left ul li {
     list-style-type: none !important;
@@ -65,7 +80,7 @@ a{
 
 .send_mail{
     margin-right: 10px;
-
+  background-color: #397500;
 }
 .main_back_sendmail{
     padding-left: 85%;
@@ -81,12 +96,12 @@ a{
     padding-left: 330px;
 
 }
-.footer {
-    background-color: #eec6c6;
-    color: #000000;
-    height: 40px;
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+.flex-column li{
+ padding-left: 15px;
 }
+.flex-column h3{
+    color: #ffffff;
+}
+
 
 

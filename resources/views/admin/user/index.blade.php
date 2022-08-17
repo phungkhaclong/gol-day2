@@ -9,7 +9,7 @@
                 </ul>
             </div>
         @endif
-        <table class="table table-bordered">
+        <table class="table table-bordered table-all">
             <div class="row">
                 <div class="col-md-2">
                     <p><span>{{ __('user.UserList') }}</span> </p>
@@ -27,20 +27,20 @@
             </div>
             <thead>
                 <tr>
-                    <th style="width: 10%;" scope="col">{{ __('user.Avatar') }}</th>
+                    <th style="width: 15%;" scope="col">{{ __('user.Avatar') }}</th>
                     <th style="width: 20%;" scope="col">{{ __('user.Name') }}</th>
                     <th style="width: 25%;"scope="col">{{ __('user.Email') }}</th>
                     <th style="width: 20%;"scope="col">{{ __('user.Roles') }}</th>
-                    <th style="width: 30%;" scope="col">{{ __('user.Action') }}</th>
+                    <th style="width: 20%;" scope="col">{{ __('user.Action') }}</th>
                 </tr>
             </thead>
             <tbody>
                 @if (!empty($users))
                     @foreach ($users as $value)
-                        <tr>
-                            <th style="width: 10%;"><img src="{{ $value->social_avatar ?? 'https://fakeimg.pl/50/' }}"
+                        <tr >
+                            <td><img src="{{ $value->social_avatar ?? 'https://fakeimg.pl/50/' }}"
                                         class="user-avatar rounded-circle" alt="">
-                                </th>
+                                </td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
                             <td>
