@@ -28,6 +28,4 @@ class Permission extends Model
     {
         return $this->belongsTo(PermissionGroup::class);
     }
-
-    
 }

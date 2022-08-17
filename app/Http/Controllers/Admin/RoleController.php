@@ -59,6 +59,7 @@ class RoleController extends Controller
         return view('admin.role.form', [
             'role' => $role,
             'permissionGroups' => $this->permissionGroupRepository->with('permissions')->get(),
+            'isShow' => true,
         ]);
     }
 
