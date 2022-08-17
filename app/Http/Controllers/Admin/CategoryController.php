@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use Illuminate\Http\Request;
 use App\Repositories\Category\CategoryRepository;
-
 
 class CategoryController extends Controller
 {
@@ -61,7 +59,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, $id)
     {
-        $this->categoryRepository->save($request->validated(),['id' => $id]);
+        $this->categoryRepository->save($request->validated(), ['id' => $id]);
 
         return redirect()->route('admin.category.index');
     }
