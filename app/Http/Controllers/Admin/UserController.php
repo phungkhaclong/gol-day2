@@ -31,7 +31,7 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.user.index', [
-            'users' => $this->userRepository->with('roles')->paginate(),
+            'users' => $this->userRepository->with('roles')->search()->paginate(),
         ]);
     }
 

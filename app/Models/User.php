@@ -122,4 +122,12 @@ class User extends Authenticatable implements MustVerifyEmail
             'verified_at' => $this->freshTimestamp(),
         ])->save();
     }
+
+    public function scopeSearch($query)
+    {
+        if ($key = request()->key) {
+            $query = $query->where('name', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
 }

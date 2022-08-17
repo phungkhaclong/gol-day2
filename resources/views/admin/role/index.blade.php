@@ -1,8 +1,8 @@
 @extends('admin.layouts.admin.master')
 @section('main')
 
-    <div class="col-md-9 main_right">
-        <table class="table table-bordered">
+    <div class="container-fluid">
+        <table class="table table-bordered table-all">
             <div class="row">
                 <div class="col-md-2">
                     <p><span>{{ __('role.list') }}</span> </p>
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <thead>
-                <tr>
+                <tr >
                     <th style="width: 10%;" scope="col">{{ __('role.user') }}</th>
                     <th style="width: 10%;" scope="col">ID</th>
                     <th style="width: 30%;" scope="col">{{ __('role.name') }}</th>
@@ -25,7 +25,7 @@
             <tbody>
                 @if (!empty($roles))
                     @foreach ($roles as $role)
-                        <tr>
+                        <tr class="table-all" >
                             <th><i class="fa fa-user" aria-hidden="true"></i></th>
                             <td> {{ $role->id }}</td>
                             <td> {{ $role->name }}</td>

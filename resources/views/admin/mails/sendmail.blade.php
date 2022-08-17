@@ -1,7 +1,7 @@
 
 @extends('admin.layouts.admin.master')
 @section('main')
-<div class="col-md-9 main_right">
+<div class="container-fluid">
     @if (\Session::has('message'))
                 <div class="alert alert-success">
                     <ul>

@@ -16,4 +16,6 @@ class PermissionGroup extends Model
     {
         return $this->hasMany(Permission::class);
     }
+
+
 }
