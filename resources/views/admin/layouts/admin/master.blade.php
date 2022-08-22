@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="{{ url('../admin123') }}/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="{{ url('../admin123') }}/dist/css/css-all.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
@@ -30,8 +34,14 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/assets/summernote/summernote-bs4.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 
 <script src="{{ url('../admin123') }}/dist/js/adminlte.min.js"></script>
 
-
+<script>
+    tinymce.init({
+    selector: 'textarea#default'
+});
+</script>
 </html>

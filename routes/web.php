@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\PermissionGroupController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -39,4 +41,6 @@ Route::name('admin.')->prefix('admin')->middleware(['AdminVerifyMiddleware'])->g
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
     Route::resource('permission-group', PermissionGroupController::class);
+    Route::resource('question', QuestionController::class);
+    Route::resource('customer', CustomerController::class);
 });
