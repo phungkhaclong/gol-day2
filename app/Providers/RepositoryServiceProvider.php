@@ -37,6 +37,26 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Category\CategoryRepositoryInterface::class,
             \App\Repositories\Category\CategoryRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Question\QuestionRepositoryInterface::class,
+            \App\Repositories\Question\QuestionRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Answer\AnswerRepositoryInterface::class,
+            \App\Repositories\Answer\AnswerRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Customer\CustomerRepositoryInterface::class,
+            \App\Repositories\Customer\CustomerRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Phonezalo\PhonezaloRepositoryInterface::class,
+            \App\Repositories\Phonezalo\PhonezaloRepository::class
+        );
     }
 
     /**

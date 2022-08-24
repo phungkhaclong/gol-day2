@@ -102,6 +102,16 @@ a{
 .flex-column h3{
     color: #ffffff;
 }
+.main_but button{
+    height: 40px;
+}
+.main-right{
+    margin-top: 10px;
+}
+.main-right .icon-i{
+    padding-right: 5px;
+}
+
 
 
 
