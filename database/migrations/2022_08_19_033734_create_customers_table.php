@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,28 +13,28 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('sex');
-            $table->integer('custommer-id');
-            $table->string('phone')->nullable();
-            $table->string('phonezalo')->nullable();
+            $table->id();
+            $table->string('name')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('customer_id')->nullable();
+            $table->integer('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('contact')->nullable();
             $table->string('position')->nullable();
             $table->string('unit')->nullable();
-            $table->string('tax-code')->nullable();
-            $table->string('invoice address')->nullable();
-            $table->string('bank-account')->nullable();
-            $table->string('customer-type')->nullable();
-            $table->string('description-debt')->nullable();
-            $table->string('debt-term')->nullable();
-            $table->string('allowable-debt-description')->nullable();
-            $table->string('customer-notes')->nullable();
+            $table->string('tax_code')->nullable();
+            $table->string('invoice_address')->nullable();
+            $table->integer('bank_account')->nullable();
+            $table->string('customer_type')->nullable();
+            $table->string('accounting_rights')->default(0)->nullable();
+            $table->string('key_order')->default(0)->nullable();
+            $table->text('description_debt')->nullable();
+            $table->string('debt_term')->nullable();
+            $table->text('allowable_debt_description')->nullable();
+            $table->text('customer_notes')->nullable();
+            $table->string('user_created')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

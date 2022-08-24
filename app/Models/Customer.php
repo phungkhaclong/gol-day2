@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Custommer extends Model
+class Customer extends Model
 {
     use HasFactory;
 
@@ -15,20 +15,27 @@ class Custommer extends Model
         'name',
         'email',
         'sex',
-        'custommer-id',
+        'customer_id',
         'phone',
-        'phonezalo',
+        'contact',
         'address',
-        'phonezalo',
         'position',
         'unit',
-        'tax-code',
-        'invoice address',
-        'bank-account',
-        'customer-type',
-        'description-debt',
-        'debt-term',
-        'allowable-debt-description',
-        'customer-notes',
+        'tax_code',
+        'invoice_address',
+        'bank_account',
+        'customer_type',
+        'accounting_rights',
+        'key_order',
+        'description_debt',
+        'debt_term',
+        'allowable_debt_description',
+        'customer_notes',
+        'user_created',
     ];
+
+    public function phonezalos()
+    {
+        return $this->hasMany(Phonezalo::class);
+    }
 }

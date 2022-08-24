@@ -108,6 +108,9 @@ a{
 .main-right{
     margin-top: 10px;
 }
+.main-right .icon-i{
+    padding-right: 5px;
+}
 
 
 

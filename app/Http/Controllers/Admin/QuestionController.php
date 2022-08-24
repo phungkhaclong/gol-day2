@@ -8,8 +8,6 @@ use App\Http\Requests\QuestionRequest;
 use App\Repositories\Question\QuestionRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Answer\AnswerRepository;
-use App\Models\Answer;
-use App\Models\Question;
 
 class QuestionController extends Controller
 {
@@ -51,13 +49,13 @@ class QuestionController extends Controller
                 'content' => $data['answers'][$i],
                 'question_id' => $question->id,
             ];
-        }
-        foreach ($answers as $key => $answer) {
-            if ($data['radio-answer'] == $key) {
-                $answer['correct'] = true;
             }
-            $this->answerRepository->save($answer);
-        }
+            foreach ($answers as $key => $answer) {
+                if ($data['radio-answer'] == $key) {
+                    $answer['correct'] = true;
+                }
+                $this->answerRepository->save($answer);
+            }
             DB::commit();
             return redirect()->route('question.index', $question->id)->with(
                 'success',
